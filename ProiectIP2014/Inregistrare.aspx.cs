@@ -14,13 +14,19 @@ public partial class SignUp : System.Web.UI.Page {
     protected void CreateUserWizard1_ContinueButtonClick(object sender, EventArgs e) {
         //Debug.WriteLine("continue button");
         //try {
-        //Profile.RegisterDate = System.DateTime.Now;
-        //Response.Redirect("~/Default.aspx", false);
+        Profile.RegisterDate = System.DateTime.Now;
+
+        Profile.AnInfiintare = System.Convert.ToInt32(((TextBox)(CreateUserWizard1.CreateUserStep.ContentTemplateContainer.FindControl("TextBoxAn"))).Text);
+        Profile.DescriereActivitate = ((TextBox)(CreateUserWizard1.CreateUserStep.ContentTemplateContainer.FindControl("TextBoxDescriere"))).Text;
+        Profile.Profil = ((TextBox)(CreateUserWizard1.CreateUserStep.ContentTemplateContainer.FindControl("TextBoxProfil"))).Text;
+        Profile.NrInregistrare = System.Convert.ToInt32(((TextBox)(CreateUserWizard1.CreateUserStep.ContentTemplateContainer.FindControl("TextBoxNrInregistrare"))).Text);
+        Profile.TipONG = ((DropDownList)(CreateUserWizard1.CreateUserStep.ContentTemplateContainer.FindControl("DropDownListTip"))).SelectedItem.ToString(); 
+        Response.Redirect("~/Default.aspx", false);
         // }
         //catch (Exception exceptie) {
         //   Debug.WriteLine("continue button am prins exceptia "+ exceptie);        
         //}
-        //   Debug.WriteLine("continue button after redirect");
+        // Debug.WriteLine("continue button after redirect");
     }
 
     protected void CreateUserWizard1_CreatedUser(object sender, EventArgs e) {
@@ -32,6 +38,7 @@ public partial class SignUp : System.Web.UI.Page {
         catch (System.Configuration.Provider.ProviderException) {
             Debug.WriteLine("am prins exceptia");
         }
+
     }
 
 }

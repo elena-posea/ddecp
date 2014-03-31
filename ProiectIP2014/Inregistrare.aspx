@@ -6,9 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
     <div class="container" style="background-color: ghostwhite;">
-        <asp:CreateUserWizard ID="CreateUserWizard1" runat="server" OnCreatedUser="CreateUserWizard1_CreatedUser">
-            <%--  OnContinueButtonClick="CreateUserWizard1_ContinueButtonClick"
-            --%>
+        <asp:CreateUserWizard ID="CreateUserWizard1" runat="server" OnCreatedUser="CreateUserWizard1_CreatedUser" OnContinueButtonClick="CreateUserWizard1_ContinueButtonClick">
             <WizardSteps>
                 <asp:CreateUserWizardStep ID="CreateUserWizardStep1" runat="server">
                     <ContentTemplate>
@@ -74,8 +72,8 @@
                                 </td>
                                 <td>
                                     <asp:DropDownList ID="DropDownListTip" runat="server">
-                                        <asp:ListItem> Asociaţie </asp:ListItem>
-                                        <asp:ListItem> Fundaţie </asp:ListItem>
+                                        <asp:ListItem Text="Asociaţie" Value="1"> Asociaţie </asp:ListItem>
+                                        <asp:ListItem Text="Fundaţie" Value="2"> Fundaţie </asp:ListItem>
                                     </asp:DropDownList>
                                 </td>
                             </tr>
