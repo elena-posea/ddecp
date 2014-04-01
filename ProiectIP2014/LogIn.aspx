@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-     <div class="container" style="background-color: ghostwhite;">
+     <div class="container" style="background-color: ghostwhite; max-width: 1000px;">
        <asp:LoginView ID="LoginView1" runat="server">
             <AnonymousTemplate>
                 <asp:Login ID="Login1" runat="server"></asp:Login>
