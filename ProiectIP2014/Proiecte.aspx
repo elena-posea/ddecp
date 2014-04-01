@@ -31,52 +31,52 @@
                         </asp:ListView>
 
                     </div>
-        <asp:DataPager runat="server" PagedControlID="ListView1" ID="DataPager"  PageSize="4">
-           <Fields>
-              <asp:NumericPagerField
-                ButtonCount="5"
-                PreviousPageText="<--"
-                NextPageText="-->" />
-           </Fields>
-      </asp:DataPager>
+                    <asp:DataPager runat="server" PagedControlID="ListView1" ID="DataPager"  PageSize="4">
+                       <Fields>
+                          <asp:NumericPagerField
+                            ButtonCount="5"
+                            PreviousPageText="<--"
+                            NextPageText="-->" />
+                       </Fields>
+                   </asp:DataPager>
              </AnonymousTemplate>
-          <RoleGroups>
-            <asp:RoleGroup Roles="ONG">
-               <ContentTemplate> 
-                        <asp:ListView ID="ListView1" DataSourceID="SqlDataSource1" runat="server">
-                            <LayoutTemplate>
-                                <div class="row" id="itemPlaceholder" runat="server" >
+                  <RoleGroups>
+                    <asp:RoleGroup Roles="ONG">
+                       <ContentTemplate> 
+                                <asp:ListView ID="ListView1" DataSourceID="SqlDataSource1" runat="server">
+                                    <LayoutTemplate>
+                                        <div class="row" id="itemPlaceholder" runat="server" >
 
-                                </div>
-                            </LayoutTemplate>
-                            <ItemTemplate>
-                                <div class="col-lg-6" id="itemPlaceholder" runat="server">
-                                      <h2><%# DataBinder.Eval(Container.DataItem,"Nume") %></h2>
-                                      <p class="text-danger"><%# DataBinder.Eval(Container.DataItem,"data_i") %> -- <%# DataBinder.Eval(Container.DataItem,"data_sfarsit") %></p>
-                                      <p><%# DataBinder.Eval(Container.DataItem,"Descriere") %> </p>
-                                     <div class="btn-group">
-                                            <asp:Button ID="Detalii_Stire"  runat="server" Text="Vezi detalii &raquo;" OnCommand="Detalii_Stire_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_proiect") %>'  class="btn btn-primary" />
-                                            <asp:Button ID="Colaborator"  runat="server" Text="Vreau sa particip" OnCommand="Colaborator_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_proiect") %>'  class="btn btn-primary" />
-                                       </div>
-                                </div>
+                                        </div>
+                                    </LayoutTemplate>
+                                    <ItemTemplate>
+                                        <div class="col-lg-6" id="itemPlaceholder" runat="server">
+                                              <h2><%# DataBinder.Eval(Container.DataItem,"Nume") %></h2>
+                                              <p class="text-danger"><%# DataBinder.Eval(Container.DataItem,"data_i") %> -- <%# DataBinder.Eval(Container.DataItem,"data_sfarsit") %></p>
+                                              <p><%# DataBinder.Eval(Container.DataItem,"Descriere") %> </p>
+                                             <div class="btn-group">
+                                                    <asp:Button ID="Detalii_Stire"  runat="server" Text="Vezi detalii &raquo;" OnCommand="Detalii_Stire_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_proiect") %>'  class="btn btn-primary" />
+                                                    <asp:Button ID="Colaborator"  runat="server" Text="Vreau sa particip" OnCommand="Colaborator_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_proiect") %>'  class="btn btn-primary" />
+                                               </div>
+                                        </div>
 
                
-                            </ItemTemplate>
+                                    </ItemTemplate>
 
-                        </asp:ListView>
+                                </asp:ListView>
 
-                    </div>
-        <asp:DataPager runat="server" PagedControlID="ListView1" ID="DataPager"  PageSize="4">
-           <Fields>
-              <asp:NumericPagerField
-                ButtonCount="5"
-                PreviousPageText="<--"
-                NextPageText="-->" />
-           </Fields>
-      </asp:DataPager>
-            </ContentTemplate>
-         </asp:RoleGroup>
-      </RoleGroups> 
+                            </div>
+                        <asp:DataPager runat="server" PagedControlID="ListView1" ID="DataPager"  PageSize="4">
+                           <Fields>
+                              <asp:NumericPagerField
+                                ButtonCount="5"
+                                PreviousPageText="<--"
+                                NextPageText="-->" />
+                           </Fields>
+                      </asp:DataPager>
+                    </ContentTemplate>
+                 </asp:RoleGroup>
+              </RoleGroups> 
       </asp:LoginView>                               
 
        
