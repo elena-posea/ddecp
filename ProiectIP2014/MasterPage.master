@@ -33,13 +33,27 @@
                             <li><a href="#about">Stiri</a></li>
                             <li><a href="Proiecte.aspx">Proiecte</a></li>
                             <li><a href="#contact">Organizatii</a></li>
+                            <asp:LoginView ID="LoginView2" runat="server">
+                                <RoleGroups>
+                                    <asp:RoleGroup Roles="ONG">
+                                        <ContentTemplate>
+                                            <li>
+                                                <asp:HyperLink ID="HyperLinkProfil" runat="server">
+                                                Profilul meu    
+                                                </asp:HyperLink>
+
+                                            </li>
+                                        </ContentTemplate>
+                                    </asp:RoleGroup>
+                                </RoleGroups>
+                            </asp:LoginView>
                         </ul>
 
                         <ul class="nav navbar-nav navbar-right">
                             <li>
                                 <div class="navbar-form navbar-left" role="search">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Search">
+                                        <input type="text" class="form-control" placeholder="Search" />
                                     </div>
                                     <!-- /.nav-collapse -->
                                 </div>
