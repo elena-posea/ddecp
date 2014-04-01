@@ -61,7 +61,7 @@
                                     <asp:Label ID="LabelDescriere" runat="server" Text="Descrierea activităţii "></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TextBoxDescriere" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="TextBoxDescriere" runat="server" TextMode="MultiLine"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidatorDescriere" runat="server" ErrorMessage="Descrierea activităţii ONG-ului este obligatorie" ControlToValidate="TextBoxDescriere"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
