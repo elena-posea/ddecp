@@ -35,6 +35,9 @@ public partial class Profil : System.Web.UI.Page {
                 hl.NavigateUrl = "~/EditareProfil.aspx?username=" + Profile.UserName;
                 hl.Visible = true;
             }
+
+            SqlDataSourceProiectePersonale.SelectCommand = "SELECT * FROM [Proiecte] WHERE  CAST(cod_user AS VARCHAR(50)) = '" + username + "'";
+
         }
 
     }

@@ -35,5 +35,8 @@
     <br />
     <asp:Label ID="LabelProfilCamp" runat="server" Text=""></asp:Label>
     <br />
+<asp:SqlDataSource ID="SqlDataSourceProiectePersonale" runat="server" ConnectionString='<%$ ConnectionStrings:MySqlConnection %>' SelectCommand="SELECT * FROM [Proiecte]"></asp:SqlDataSource>
+<asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSourceProiectePersonale"></asp:GridView>
+
 </asp:Content>
 
