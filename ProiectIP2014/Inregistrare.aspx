@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-     <div class="container" style="background-color: ghostwhite;">
+     <div class="container" style="background-color: ghostwhite; max-width: 1000px;">
        <asp:LoginView ID="LoginView1" runat="server">
             <AnonymousTemplate>
                 <asp:CreateUserWizard ID="CreateUserWizard1" runat="server">
