@@ -22,9 +22,10 @@ public partial class AdaugaProiect : System.Web.UI.Page
             connection.Open();
 
             Guid userGuid = (Guid)Membership.GetUser().ProviderUserKey;
-            SqlCommand command = new SqlCommand("INSERT INTO [Proiecte] ([cod_user],[nume], [descriere], [domeniu], [data_inceput],[data_sfarsit]) VALUES (@cod_user,@nume, @descriere, @domeniu, @data_inceput,@data_sfarsit)", connection);
+            SqlCommand command = new SqlCommand("INSERT INTO [Proiecte] ([cod_user],[nume], [descriere], [continut], [domeniu], [data_inceput],[data_sfarsit]) VALUES (@cod_user,@nume, @descriere,@continut, @domeniu, @data_inceput,@data_sfarsit)", connection);
             command.Parameters.AddWithValue("cod_user", userGuid);
             command.Parameters.AddWithValue("nume", titlu_proiect.Text);
+            command.Parameters.AddWithValue("continut", continut_proiect.Text);
             command.Parameters.AddWithValue("descriere", descriere_proiect.Text);
             command.Parameters.AddWithValue("domeniu", domeniu_proiect.Text);
             command.Parameters.AddWithValue("data_inceput", data_inceput.SelectedDate);

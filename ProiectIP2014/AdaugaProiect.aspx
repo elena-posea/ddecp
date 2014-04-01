@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-     <div class="container" style="background-color: ghostwhite;" style="max-width: 1000px;">
+     <div class="container" style="background-color: ghostwhite;max-width: 1000px;">
          <asp:Label ID="Label1" runat="server" Text="Titlu"></asp:Label><br/>
          <asp:TextBox ID="titlu_proiect" runat="server" Height="70px"  Width="60%" Rows="2" TextMode="MultiLine" ClientIDMode="Inherit"></asp:TextBox><br />
          <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="titlu_proiect" runat="server" ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator><br />
@@ -11,6 +11,11 @@
          <asp:Label ID="Label2" runat="server" Text="Descriere"></asp:Label><br />
          <asp:TextBox ID="descriere_proiect" runat="server" Height="70px"  Width="60%" Rows="2" TextMode="MultiLine" ClientIDMode="Inherit"></asp:TextBox><br />
          <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="descriere_proiect" runat="server" ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator><br />
+
+         <asp:Label ID="Label6" runat="server" Text="Continut"></asp:Label><br />
+         <asp:TextBox ID="continut_proiect" runat="server" Height="70px"  Width="60%" Rows="2" TextMode="MultiLine" ClientIDMode="Inherit"></asp:TextBox><br />
+         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ControlToValidate="continut_proiect" runat="server" ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator><br />
+
 
          <asp:Label ID="Label3" runat="server" Text="Domeniu"></asp:Label><br />
          <asp:TextBox ID="domeniu_proiect" runat="server" Height="70px"  Width="60%" Rows="2" TextMode="MultiLine" ClientIDMode="Inherit"></asp:TextBox><br />
