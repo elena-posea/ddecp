@@ -37,7 +37,11 @@
     <br />
 
 <asp:SqlDataSource ID="SqlDataSourceProiectePersonale" runat="server" ConnectionString='<%$ ConnectionStrings:MySqlConnection %>' SelectCommand="SELECT * FROM [Proiecte]"></asp:SqlDataSource>
+Proiecte iniţiate: <br />
 <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSourceProiectePersonale"></asp:GridView>
 
+Proiecte la care a participat <br />
+    <asp:SqlDataSource ID="SqlDataSourceProiecteParticipant" runat="server" ConnectionString='<%$ ConnectionStrings:MySqlConnection %>' SelectCommand="SELECT Proiecte.nume FROM User_are_Colaboratori INNER JOIN Proiecte ON User_are_Colaboratori.cod_proiect = Proiecte.id_proiect"></asp:SqlDataSource>
+    <asp:GridView ID="GridView2" runat="server" DataSourceID="SqlDataSourceProiecteParticipant"></asp:GridView>
 </asp:Content>
 
