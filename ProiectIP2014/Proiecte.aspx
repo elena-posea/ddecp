@@ -18,7 +18,7 @@
                             <ItemTemplate>
                                 <div class="col-lg-6" id="itemPlaceholder" runat="server">
                                       <h2><%# DataBinder.Eval(Container.DataItem,"Nume") %></h2>
-                                      <p class="text-danger"><%# DataBinder.Eval(Container.DataItem,"data_i") %> -- <%# DataBinder.Eval(Container.DataItem,"data_sfarsit") %></p>
+                                      <p class="text-danger"><%# DataBinder.Eval(Container.DataItem,"data_i") %> -- <%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem,"data_sfarsit")).ToShortDateString() %></p>
                                       <p><%# DataBinder.Eval(Container.DataItem,"Descriere") %> </p>
                                      <div class="btn-group">
                                             <asp:Button ID="Detalii_Stire"  runat="server" Text="Vezi detalii &raquo;" OnCommand="Detalii_Stire_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_proiect") %>'  class="btn btn-primary" />
@@ -60,7 +60,6 @@
                                                </div>
                                         </div>
                                     </ItemTemplate>
-
                                 </asp:ListView>
 
                             </div>
