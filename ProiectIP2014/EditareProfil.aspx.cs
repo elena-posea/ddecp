@@ -16,7 +16,8 @@ public partial class EditareProfil : System.Web.UI.Page {
             TextBoxNrInregistrare.Text = Profile.NrInregistrare.ToString();
             DropDownListTip.SelectedValue = Profile.TipONG;
 
-            LabelNumeONG.Text = Profile.UserName;
+            LabelUserName.Text = Profile.UserName;
+            LabelNumeONGCamp.Text = Profile.NumeONG;
             LabelEmailCamp.Text = Membership.GetUser(Profile.UserName).Email;
 
         }
@@ -27,7 +28,7 @@ public partial class EditareProfil : System.Web.UI.Page {
         Profile.AnInfiintare = System.Convert.ToInt32(TextBoxAn.Text);
         Profile.DescriereActivitate = TextBoxDescriere.Text;
         Profile.Profil = TextBoxProfil.Text;
-        Profile.NrInregistrare = System.Convert.ToInt32(TextBoxNrInregistrare.Text);
+        Profile.NrInregistrare = TextBoxNrInregistrare.Text;
         Profile.TipONG = DropDownListTip.SelectedItem.ToString(); 
 
     }

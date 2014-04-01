@@ -17,10 +17,18 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:Label ID="LabelNumeONG" runat="server" Text="Denumire ONG "></asp:Label>
+                                    <asp:Label ID="LabelUserName" runat="server" Text="Username "></asp:Label>
                                 </td>
                                 <td>
                                     <asp:TextBox ID="UserName" runat="server"></asp:TextBox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Label ID="LabelNumeONG" runat="server" Text="Nume ONG "></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="TextBoxNumeONG" runat="server"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>

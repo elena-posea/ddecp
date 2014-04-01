@@ -15,11 +15,11 @@ public partial class SignUp : System.Web.UI.Page {
         //Debug.WriteLine("continue button");
         //try {
         Profile.RegisterDate = System.DateTime.Now;
-
+        Profile.NumeONG = ((TextBox)(CreateUserWizard1.CreateUserStep.ContentTemplateContainer.FindControl("TextBoxNumeONG"))).Text;
         Profile.AnInfiintare = System.Convert.ToInt32(((TextBox)(CreateUserWizard1.CreateUserStep.ContentTemplateContainer.FindControl("TextBoxAn"))).Text);
         Profile.DescriereActivitate = ((TextBox)(CreateUserWizard1.CreateUserStep.ContentTemplateContainer.FindControl("TextBoxDescriere"))).Text;
         Profile.Profil = ((TextBox)(CreateUserWizard1.CreateUserStep.ContentTemplateContainer.FindControl("TextBoxProfil"))).Text;
-        Profile.NrInregistrare = System.Convert.ToInt32(((TextBox)(CreateUserWizard1.CreateUserStep.ContentTemplateContainer.FindControl("TextBoxNrInregistrare"))).Text);
+        Profile.NrInregistrare = ((TextBox)(CreateUserWizard1.CreateUserStep.ContentTemplateContainer.FindControl("TextBoxNrInregistrare"))).Text;
         Profile.TipONG = ((DropDownList)(CreateUserWizard1.CreateUserStep.ContentTemplateContainer.FindControl("DropDownListTip"))).SelectedItem.ToString(); 
         Response.Redirect("~/Default.aspx", false);
         // }

@@ -8,8 +8,16 @@
     <table class="formular">
         <tr>
             <td colspan="2">Editare profil
-                <asp:Label ID="LabelNumeONG" runat="server" Text=""></asp:Label>
+                <asp:Label ID="LabelUserName" runat="server" Text=""></asp:Label>
             
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Label ID="LabelNumeONG" runat="server" Text="Nume ONG "></asp:Label>            
+            </td>
+            <td>
+                <asp:Label ID="LabelNumeONGCamp" runat="server"></asp:Label>
             </td>
         </tr>
         <tr>

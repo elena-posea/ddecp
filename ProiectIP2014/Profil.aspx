@@ -12,7 +12,11 @@
         </LoggedInTemplate>
     </asp:LoginView>
     <%--  aici pun eu tot ce vreau sa vada lumea pe pagina mea; cam ce am completat la Inregistrare --%>
-    <asp:Label ID="LabelNumeONGCamp" runat="server" Text=""></asp:Label><br />
+    <asp:Label ID="LabelNumeONG" runat="server" Text=""></asp:Label><br />
+
+    <asp:Label ID="LabelUserName" runat="server" Text="Username: "></asp:Label>
+    <asp:Label ID="LabelUserNameCamp" runat="server" Text=""></asp:Label><br />
+
 
     <asp:Label ID="LabelEmail" runat="server" Text="E-mail de contact: "></asp:Label>
     <asp:Label ID="LabelEmailCamp" runat="server" Text=""></asp:Label><br />
