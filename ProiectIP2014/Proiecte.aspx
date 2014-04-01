@@ -59,8 +59,6 @@
                                                     <asp:Button ID="Colaborator"  runat="server" Text="Vreau sa particip" OnCommand="Colaborator_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_proiect") %>'  class="btn btn-primary" />
                                                </div>
                                         </div>
-
-               
                                     </ItemTemplate>
 
                                 </asp:ListView>
