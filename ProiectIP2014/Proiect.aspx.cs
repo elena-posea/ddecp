@@ -112,4 +112,14 @@ public partial class Proiect : System.Web.UI.Page {
 
 
     }
+
+    protected String getUserNameFromID(String id_user_editor) {
+        SqlConnection connection = new SqlConnection();
+        connection.ConnectionString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.MDF;Integrated Security=True;User Instance=True";
+        connection.Open();
+        SqlCommand commandGetUser = new SqlCommand("SELECT UserName FROM aspnet_Users where CAST(UserId AS VARCHAR(50)) = '" + id_user_editor + "'", connection);
+        return (commandGetUser.ExecuteScalar()).ToString();
+
+    }
+
 }
