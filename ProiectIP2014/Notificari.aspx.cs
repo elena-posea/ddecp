@@ -74,13 +74,13 @@ public partial class Notificari : System.Web.UI.Page
             }
             catch (SqlException exc)
             {
-                Label lb = (Label)FindControl("Raspuns");
+                Label lb = (Label)LoginView1.FindControl("Raspuns");
                 lb.Text = exc.Message;
             }
         }
         catch (Exception exc)
         {
-            Label lb = (Label)FindControl("Raspuns");
+            Label lb = (Label)LoginView1.FindControl("Raspuns");
             lb.Text = exc.Message;
         }
     }
