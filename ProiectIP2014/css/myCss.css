@@ -1,0 +1,55 @@
+﻿table.formular td {
+   padding-bottom: 1em;
+   padding-left: 1em;
+}
+
+.ok
+{
+    background-color: #BCED91;
+    width: 100%;
+    border: 1px solid #8CDD81;
+}
+
+.notOk
+{
+    background-color: #EE6363;
+    width: 100%;
+    border: 1px solid #9D1309;
+}
+
+.alignRight
+{
+    float: right;
+    margin-right: 15px;
+}
+
+
+.comment
+{
+    /*border: 1px solid #99CCFF;
+    padding-left: 5px;
+    */
+    background-color: #cad6e8;
+}
+
+.titlu
+{
+    background-color: #adc3c6;
+    font-weight: bold;
+    font-size: 20px;
+    padding-left: 5px;
+}
+
+.autor
+{
+    font-style: italic;
+    font-size: 15px;
+}
+
+.continut
+{
+    background-color: #EEF0FF;
+    padding-left: 5px;
+}
+
+

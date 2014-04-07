@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head id="Head1" runat="server">
     <title></title>
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
 
@@ -36,7 +36,12 @@
             <asp:LoginView ID="LoginView2" runat="server">
                 <RoleGroups>
                     <asp:RoleGroup Roles="ONG">
-                        <ContentTemplate>Profilul meu</ContentTemplate>
+                        <ContentTemplate><li>
+                                                <asp:HyperLink ID="HyperLinkProfil" runat="server">
+                                                Profilul meu    
+                                                </asp:HyperLink>
+
+                                            </li></ContentTemplate>
                     </asp:RoleGroup>
                 </RoleGroups>
             </asp:LoginView>
