@@ -21,7 +21,7 @@
                                       <p class="text-danger"><%# DataBinder.Eval(Container.DataItem,"data_i") %> -- <%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem,"data_sfarsit")).ToShortDateString() %></p>
                                       <p><%# DataBinder.Eval(Container.DataItem,"Descriere") %> </p>
                                      <div class="btn-group">
-                                            <asp:Button ID="Detalii_Stire"  runat="server" Text="Vezi detalii &raquo;" OnCommand="Detalii_Stire_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_proiect") %>'  class="btn btn-primary" />
+                                            <asp:Button ID="Detalii_Proiect"  runat="server" Text="Vezi detalii &raquo;" OnCommand="Detalii_Proiect_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_proiect") %>'  class="btn btn-primary" />
                                       </div>
                                 </div>
 
@@ -43,6 +43,7 @@
                   <RoleGroups>
                     <asp:RoleGroup Roles="ONG">
                        <ContentTemplate> 
+                           
                                 <asp:ListView ID="ListView1" DataSourceID="SqlDataSource1" runat="server">
                                     <LayoutTemplate>
                                         <div class="row" id="itemPlaceholder" runat="server" >
@@ -53,9 +54,11 @@
                                         <div class="col-lg-6" id="itemPlaceholder" runat="server">
                                               <h2><%# DataBinder.Eval(Container.DataItem,"Nume") %></h2>
                                               <p class="text-danger"><%# DataBinder.Eval(Container.DataItem,"data_i") %> -- <%# DataBinder.Eval(Container.DataItem,"data_sfarsit") %></p>
-                                              <p><%# DataBinder.Eval(Container.DataItem,"Descriere") %> </p>
+                                              <p class="text-danger">Propus de: <%# DataBinder.Eval(Container.DataItem,"UserName") %></p>
+                                              
+                                            <p><%# DataBinder.Eval(Container.DataItem,"Descriere") %> </p>
                                              <div class="btn-group">
-                                                    <asp:Button ID="Detalii_Stire"  runat="server" Text="Vezi detalii &raquo;" OnCommand="Detalii_Stire_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_proiect") %>'  class="btn btn-primary" />
+                                                    <asp:Button ID="Detalii_Proiect"  runat="server" Text="Vezi detalii &raquo;" OnCommand="Detalii_Proiect_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_proiect") %>'  class="btn btn-primary" />
                                                     <asp:Button ID="Colaborator"  runat="server" Text="Vreau sa particip" OnCommand="Colaborator_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_proiect") %>'  class="btn btn-primary" />
                                                </div>
                                         </div>
@@ -75,8 +78,8 @@
                  </asp:RoleGroup>
               </RoleGroups> 
       </asp:LoginView>                               
-
-       
+        <br />
+        <asp:Label ID="Raspuns" runat="server" Text=" "></asp:Label>
    
         <hr/>
 
