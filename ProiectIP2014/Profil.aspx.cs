@@ -47,7 +47,9 @@ public partial class Profil : System.Web.UI.Page {
                 hl.Visible = true;
             }
 
-            SqlDataSourceProiectePersonale.SelectCommand = "SELECT * FROM [Proiecte] WHERE  CAST(cod_user AS VARCHAR(50)) = '" + Membership.GetUser(username).ProviderUserKey + "'";
+            SqlDataSourceProiectePersonale.SelectCommand = "SELECT Proiecte.nume, Proiecte.id_proiect FROM [Proiecte] WHERE  CAST(cod_user AS VARCHAR(50)) = '" + Membership.GetUser(username).ProviderUserKey + "'";
+
+            SqlDataSourceProiecteParticipant.SelectCommand = "SELECT Proiecte.nume, Proiecte.id_proiect FROM User_are_Colaboratori INNER JOIN Proiecte ON User_are_Colaboratori.cod_proiect = Proiecte.id_proiect WHERE  CAST(User_are_Colaboratori.cod_user AS VARCHAR(50)) = '" + Membership.GetUser(username).ProviderUserKey + "'";
             }
         }
 

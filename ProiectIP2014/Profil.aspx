@@ -44,15 +44,36 @@
                 <asp:Label ID="LabelProfilCamp" runat="server" Text=""></asp:Label>
                 <br />
 
-                <asp:SqlDataSource ID="SqlDataSourceProiectePersonale" runat="server" ConnectionString='<%$ ConnectionStrings:MySqlConnection %>' SelectCommand="SELECT * FROM [Proiecte]"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="SqlDataSourceProiectePersonale" runat="server" ConnectionString='<%$ ConnectionStrings:MySqlConnection %>' SelectCommand="SELECT Proiecte.nume, Proiecte.id_proiect FROM [Proiecte]"></asp:SqlDataSource>
                 Proiecte iniţiate:
         <br />
-                <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSourceProiectePersonale"></asp:GridView>
+
+                <asp:ListView ID="ListView1" DataSourceID="SqlDataSourceProiectePersonale" runat="server">
+                    <LayoutTemplate>
+                        <div class="row" id="itemPlaceholder" runat="server">
+                        </div>
+                    </LayoutTemplate>
+                    <ItemTemplate>
+                        <a href="Proiect.aspx?id_proiect=<%# DataBinder.Eval(Container.DataItem,"id_proiect") %> "><%# DataBinder.Eval(Container.DataItem,"nume") %> </a></p>
+                    </ItemTemplate>
+                </asp:ListView>
+
+
 
                 Proiecte la care a participat
         <br />
-                <asp:SqlDataSource ID="SqlDataSourceProiecteParticipant" runat="server" ConnectionString='<%$ ConnectionStrings:MySqlConnection %>' SelectCommand="SELECT Proiecte.nume FROM User_are_Colaboratori INNER JOIN Proiecte ON User_are_Colaboratori.cod_proiect = Proiecte.id_proiect"></asp:SqlDataSource>
-                <asp:GridView ID="GridView2" runat="server" DataSourceID="SqlDataSourceProiecteParticipant"></asp:GridView>
+                <asp:SqlDataSource ID="SqlDataSourceProiecteParticipant" runat="server" ConnectionString='<%$ ConnectionStrings:MySqlConnection %>' SelectCommand="SELECT Proiecte.nume, Proiecte.id_proiect FROM User_are_Colaboratori INNER JOIN Proiecte ON User_are_Colaboratori.cod_proiect = Proiecte.id_proiect"></asp:SqlDataSource>
+                <asp:ListView ID="ListView2" DataSourceID="SqlDataSourceProiecteParticipant" runat="server">
+                    <LayoutTemplate>
+                        <div class="row" id="itemPlaceholder" runat="server">
+                        </div>
+                    </LayoutTemplate>
+                    <ItemTemplate>
+                        <a href="Proiect.aspx?id_proiect=<%# DataBinder.Eval(Container.DataItem,"id_proiect") %> "><%# DataBinder.Eval(Container.DataItem,"nume") %> </a></p>
+                    </ItemTemplate>
+                </asp:ListView>
+                
+
             </div>
         </div>
 
