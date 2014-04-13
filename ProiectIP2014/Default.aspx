@@ -30,9 +30,9 @@
                             <a href="#" class="list-group-item">Link</a>
                             <a href="#" class="list-group-item">Link</a>
                             <a href="#" class="list-group-item active">Mesaje</a>
-                            <a href="#" class="list-group-item">Mesaje primte</a>
-                            <a href="#" class="list-group-item">Link</a>
-                            <a href="#" class="list-group-item">Link</a>
+                            <a href="#" class="list-group-item">Conversatiile mele</a>
+                            <a href="#" class="list-group-item">Conversatie noua</a>
+                            <a href="#" class="list-group-item">Cauta in conversatii</a>
                             <a href="#" class="list-group-item">Link</a>
                           </div>
                         </div><!--/span-->
