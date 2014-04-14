@@ -41,15 +41,7 @@
                 </AnonymousTemplate>
                 <RoleGroups>
                     <asp:RoleGroup Roles="ONG">
-<<<<<<< HEAD
-                       <ContentTemplate> 
-                           
-                                <asp:ListView ID="ListView1" DataSourceID="SqlDataSource1" runat="server">
-                                    <LayoutTemplate>
-                                        <div class="container" id="itemPlaceholder" runat="server" >
-=======
                         <ContentTemplate>
->>>>>>> fea3f35f7c202f4e477c739efa87c335f3f52cc5
 
                             <asp:ListView ID="ListView1" DataSourceID="SqlDataSource1" runat="server">
                                 <LayoutTemplate>
@@ -67,42 +59,6 @@
                                             <asp:Button ID="Detalii_Proiect" runat="server" Text="Vezi detalii &raquo;" OnCommand="Detalii_Proiect_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_proiect") %>' CssClass="btn btn-primary" />
                                             <asp:Button ID="Colaborator" runat="server" Text="Vreau sa particip" OnCommand="Colaborator_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_proiect") %>' CssClass="btn btn-primary" />
                                         </div>
-<<<<<<< HEAD
-                                    </LayoutTemplate>
-                                    <ItemTemplate>
-                                        <div class="col-lg-6" id="itemPlaceholder" runat="server">
-                                              <h2><%# DataBinder.Eval(Container.DataItem,"Nume") %></h2>
-                                              <p class="text-danger"><%# DataBinder.Eval(Container.DataItem,"data_i") %> -- <%# DataBinder.Eval(Container.DataItem,"data_sfarsit") %></p>
-                                              <p class="text-danger">Propus de: <a href="Profil.aspx?username=<%# DataBinder.Eval(Container.DataItem,"UserName") %> "> <%# DataBinder.Eval(Container.DataItem,"UserName") %> </a></p>
-                                              
-                                            <p><%# DataBinder.Eval(Container.DataItem,"Descriere") %> </p>
-                                             <div class="btn-group">
-                                                    <asp:Button ID="Detalii_Proiect"  runat="server" Text="Vezi detalii &raquo;" OnCommand="Detalii_Proiect_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_proiect") %>'  class="btn btn-primary" />
-                                                    <asp:Button ID="Colaborator"  runat="server" Text="Vreau sa particip" OnCommand="Colaborator_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_proiect") %>'  class="btn btn-primary" />
-                                               </div>
-                                        </div>
-                                    </ItemTemplate>
-                                </asp:ListView>
-
-                            </div>
-
-                        <asp:DataPager runat="server" PagedControlID="ListView1" ID="DataPager"  PageSize="4">
-                           <Fields>
-                              <asp:NumericPagerField
-                                ButtonCount="5"
-                                PreviousPageText="<--"
-                                NextPageText="-->" />
-                           </Fields>
-                      </asp:DataPager>
-                    </ContentTemplate>
-                 </asp:RoleGroup>
-              </RoleGroups> 
-      </asp:LoginView>                               
-        <br />
-        <asp:Label ID="Raspuns" runat="server" Text=" "></asp:Label>
-   
-        <hr/>
-=======
                                     </div>
                                 </ItemTemplate>
                             </asp:ListView>
@@ -124,7 +80,6 @@
             <asp:Label ID="Raspuns" runat="server" Text=" "></asp:Label>
 
             <hr />
->>>>>>> fea3f35f7c202f4e477c739efa87c335f3f52cc5
 
             <footer>
                 <p>&copy; Company 2014</p>
