@@ -46,7 +46,7 @@
                            
                                 <asp:ListView ID="ListView1" DataSourceID="SqlDataSource1" runat="server">
                                     <LayoutTemplate>
-                                        <div class="row" id="itemPlaceholder" runat="server" >
+                                        <div class="container" id="itemPlaceholder" runat="server" >
 
                                         </div>
                                     </LayoutTemplate>
@@ -54,7 +54,7 @@
                                         <div class="col-lg-6" id="itemPlaceholder" runat="server">
                                               <h2><%# DataBinder.Eval(Container.DataItem,"Nume") %></h2>
                                               <p class="text-danger"><%# DataBinder.Eval(Container.DataItem,"data_i") %> -- <%# DataBinder.Eval(Container.DataItem,"data_sfarsit") %></p>
-                                              <p class="text-danger">Propus de: <%# DataBinder.Eval(Container.DataItem,"UserName") %></p>
+                                              <p class="text-danger">Propus de: <a href="Profil.aspx?username=<%# DataBinder.Eval(Container.DataItem,"UserName") %> "> <%# DataBinder.Eval(Container.DataItem,"UserName") %> </a></p>
                                               
                                             <p><%# DataBinder.Eval(Container.DataItem,"Descriere") %> </p>
                                              <div class="btn-group">
@@ -66,6 +66,7 @@
                                 </asp:ListView>
 
                             </div>
+
                         <asp:DataPager runat="server" PagedControlID="ListView1" ID="DataPager"  PageSize="4">
                            <Fields>
                               <asp:NumericPagerField

@@ -34,7 +34,7 @@
                                         <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl='<%# String.Format("~/Profil.aspx?username={0}", getUserNameFromID((DataBinder.Eval(Container.DataItem,"cod_user")).ToString())) %>'>
                                             <%# getUserNameFromID((DataBinder.Eval(Container.DataItem,"cod_user")).ToString())  %>
                                         </asp:HyperLink>
-                                    said: 
+                                        said: 
                                     </span>
                                     <div class="alignRight" style="font-size: 15px; font-weight: normal;">
                                         Ultima editare:
