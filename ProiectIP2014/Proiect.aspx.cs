@@ -63,12 +63,12 @@ public partial class Proiect : System.Web.UI.Page {
     }
 
     private bool sunt_colaborator(string eu, string id_proiect) {
-        try {
+        try { // si sunt si acceptat
             SqlConnection connection = new SqlConnection();
             connection.ConnectionString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True";
             connection.Open();
             // vreau lista cu id-urile tututor colaboratorilor la acest proiect
-            SqlCommand getListCommand = new SqlCommand("SELECT cod_user FROM [User_are_Colaboratori] WHERE cod_proiect = " + id_proiect, connection);
+            SqlCommand getListCommand = new SqlCommand("SELECT cod_user FROM [User_are_Colaboratori] WHERE cod_proiect = " + id_proiect + " AND stare='activ'", connection);
             SqlDataReader dr = getListCommand.ExecuteReader();
             while (dr.Read()) { // daca mai am colaboratori
                 // Debug.Write(dr[0].ToString() + " e colaborator\n");

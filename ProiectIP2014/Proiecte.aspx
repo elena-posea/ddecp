@@ -1,54 +1,73 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Proiecte.aspx.cs" Inherits="Proiecte" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString='<%$ ConnectionStrings:MySqlConnection %>' SelectCommand="SELECT Proiecte.id_proiect, Proiecte.cod_user, CONVERT (Date, Proiecte.data_inceput) AS data_i, CONVERT (Date, Proiecte.data_sfarsit) AS data_sfarsit, Proiecte.nume, Proiecte.descriere, Proiecte.domeniu, aspnet_Users.UserName FROM Proiecte INNER JOIN aspnet_Users ON Proiecte.cod_user = aspnet_Users.UserId"></asp:SqlDataSource>
-    <div class="container" style=" max-width: 1000px;">
-    <div class="container" style="background-color: ghostwhite; max-width: 1000px;">
-        
-         <asp:LoginView ID="LoginView1" runat="server">
-             <AnonymousTemplate>
-                 <asp:ListView ID="ListView1" DataSourceID="SqlDataSource1" runat="server">
-                            <LayoutTemplate>
-                                <div class="row" id="itemPlaceholder" runat="server" >
+    <div class="container" style="max-width: 1000px;">
+        <div class="container" style="background-color: ghostwhite; max-width: 1000px;">
 
+            <asp:LoginView ID="LoginView1" runat="server">
+                <AnonymousTemplate>
+                    <asp:ListView ID="ListView1" DataSourceID="SqlDataSource1" runat="server">
+                        <LayoutTemplate>
+                            <div class="row" id="itemPlaceholder" runat="server">
+                            </div>
+                        </LayoutTemplate>
+                        <ItemTemplate>
+                            <div class="col-lg-6" id="itemPlaceholder" runat="server">
+                                <h2><%# DataBinder.Eval(Container.DataItem,"Nume") %></h2>
+                                <p class="text-danger"><%# DataBinder.Eval(Container.DataItem,"data_i") %> -- <%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem,"data_sfarsit")).ToShortDateString() %></p>
+                                <p><%# DataBinder.Eval(Container.DataItem,"Descriere") %> </p>
+                                <div class="btn-group">
+                                    <asp:Button ID="Detalii_Proiect" runat="server" Text="Vezi detalii &raquo;" OnCommand="Detalii_Proiect_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_proiect") %>' CssClass="btn btn-primary" />
                                 </div>
-                            </LayoutTemplate>
-                            <ItemTemplate>
-                                <div class="col-lg-6" id="itemPlaceholder" runat="server">
-                                      <h2><%# DataBinder.Eval(Container.DataItem,"Nume") %></h2>
-                                      <p class="text-danger"><%# DataBinder.Eval(Container.DataItem,"data_i") %> -- <%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem,"data_sfarsit")).ToShortDateString() %></p>
-                                      <p><%# DataBinder.Eval(Container.DataItem,"Descriere") %> </p>
-                                     <div class="btn-group">
-                                            <asp:Button ID="Detalii_Proiect"  runat="server" Text="Vezi detalii &raquo;" OnCommand="Detalii_Proiect_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_proiect") %>'  class="btn btn-primary" />
-                                      </div>
-                                </div>
+                            </div>
 
-               
-                            </ItemTemplate>
 
-                        </asp:ListView>
+                        </ItemTemplate>
+
+                    </asp:ListView>
 
                     </div>
-                    <asp:DataPager runat="server" PagedControlID="ListView1" ID="DataPager"  PageSize="4">
-                       <Fields>
-                          <asp:NumericPagerField
-                            ButtonCount="5"
-                            PreviousPageText="<--"
-                            NextPageText="-->" />
-                       </Fields>
-                   </asp:DataPager>
-             </AnonymousTemplate>
-                  <RoleGroups>
+                    <asp:DataPager runat="server" PagedControlID="ListView1" ID="DataPager" PageSize="4">
+                        <Fields>
+                            <asp:NumericPagerField
+                                ButtonCount="5"
+                                PreviousPageText="<--"
+                                NextPageText="-->" />
+                        </Fields>
+                    </asp:DataPager>
+                </AnonymousTemplate>
+                <RoleGroups>
                     <asp:RoleGroup Roles="ONG">
+<<<<<<< HEAD
                        <ContentTemplate> 
                            
                                 <asp:ListView ID="ListView1" DataSourceID="SqlDataSource1" runat="server">
                                     <LayoutTemplate>
                                         <div class="container" id="itemPlaceholder" runat="server" >
+=======
+                        <ContentTemplate>
+>>>>>>> fea3f35f7c202f4e477c739efa87c335f3f52cc5
 
+                            <asp:ListView ID="ListView1" DataSourceID="SqlDataSource1" runat="server">
+                                <LayoutTemplate>
+                                    <div class="row" id="itemPlaceholder" runat="server">
+                                    </div>
+                                </LayoutTemplate>
+                                <ItemTemplate>
+                                    <div class="col-lg-6" id="itemPlaceholder" runat="server">
+                                        <h2><%# DataBinder.Eval(Container.DataItem,"Nume") %></h2>
+                                        <p class="text-danger"><%# DataBinder.Eval(Container.DataItem,"data_i") %> -- <%# DataBinder.Eval(Container.DataItem,"data_sfarsit") %></p>
+                                        <p class="text-danger">Propus de: <%# DataBinder.Eval(Container.DataItem,"UserName") %></p>
+
+                                        <p class="text-danger">Propus de: <a href="Profil.aspx?username=<%# DataBinder.Eval(Container.DataItem,"UserName") %> "><%# DataBinder.Eval(Container.DataItem,"UserName") %> </a></p>
+                                        <div class="btn-group">
+                                            <asp:Button ID="Detalii_Proiect" runat="server" Text="Vezi detalii &raquo;" OnCommand="Detalii_Proiect_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_proiect") %>' CssClass="btn btn-primary" />
+                                            <asp:Button ID="Colaborator" runat="server" Text="Vreau sa particip" OnCommand="Colaborator_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_proiect") %>' CssClass="btn btn-primary" />
                                         </div>
+<<<<<<< HEAD
                                     </LayoutTemplate>
                                     <ItemTemplate>
                                         <div class="col-lg-6" id="itemPlaceholder" runat="server">
@@ -83,10 +102,34 @@
         <asp:Label ID="Raspuns" runat="server" Text=" "></asp:Label>
    
         <hr/>
+=======
+                                    </div>
+                                </ItemTemplate>
+                            </asp:ListView>
 
-      <footer>
-        <p>&copy; Company 2014</p>
-      </footer>
+                            </div>
+                        <asp:DataPager runat="server" PagedControlID="ListView1" ID="DataPager" PageSize="4">
+                            <Fields>
+                                <asp:NumericPagerField
+                                    ButtonCount="5"
+                                    PreviousPageText="<--"
+                                    NextPageText="-->" />
+                            </Fields>
+                        </asp:DataPager>
+                        </ContentTemplate>
+                    </asp:RoleGroup>
+                </RoleGroups>
+            </asp:LoginView>
+            <br />
+            <asp:Label ID="Raspuns" runat="server" Text=" "></asp:Label>
+
+            <hr />
+>>>>>>> fea3f35f7c202f4e477c739efa87c335f3f52cc5
+
+            <footer>
+                <p>&copy; Company 2014</p>
+            </footer>
+        </div>
     </div>
 </asp:Content>
 
