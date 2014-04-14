@@ -1,9 +1,9 @@
-﻿<%@ master language="C#" autoeventwireup="true" codefile="MasterPage.master.cs" inherits="MasterPage" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head id="Head1" runat="server">
     <title></title>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
 
@@ -14,10 +14,9 @@
 </head>
 <body>
     <form id="form1" runat="server">
-
         <div>
             <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-                <div class="container" style="max-width: 1000px;">
+                <div class="container" style="max-width: 1050px;">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                             <span class="sr-only">Toggle navigation</span>
@@ -42,11 +41,13 @@
                                                 Profilul meu    
                                                 </asp:HyperLink>
 
+
                                             </li>
                                         </ContentTemplate>
                                     </asp:RoleGroup>
                                 </RoleGroups>
                             </asp:LoginView>
+
                         </ul>
 
                         <ul class="nav navbar-nav navbar-right">
@@ -55,10 +56,22 @@
                                     <div class="form-group">
                                         <input type="text" class="form-control" placeholder="Search" />
                                     </div>
-                                    <!-- /.nav-collapse -->
+                                    <button type="submit" class="btn btn-default">Submit</button>
                                 </div>
                             </li>
+
+                            <asp:LoginView ID="LoginView3" runat="server">
+                                <RoleGroups>
+                                    <asp:RoleGroup Roles="ONG">
+                                        <ContentTemplate>
+                                            <li><a href="Notificari.aspx">Notificari</a></li>
+                                        </ContentTemplate>
+                                    </asp:RoleGroup>
+                                </RoleGroups>
+                            </asp:LoginView>
                             <asp:LoginView ID="LoginView1" runat="server">
+
+
                                 <LoggedInTemplate>
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -84,26 +97,25 @@
                             </asp:LoginView>
                         </ul>
                     </div>
-                <!-- /.nav-collapse -->
+                    <!-- /.nav-collapse -->
+                </div>
+                <!-- /.container -->
             </div>
-            <!-- /.container -->
-        </div>
-        <!-- /.navbar -->
+            <!-- /.navbar -->
 
 
 
 
 
-
-        <!-- Bootstrap core JavaScript
+            <!-- Bootstrap core JavaScript
     ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="http://getbootstrap.com/examples/offcanvas/offcanvas.js"></script>
+            <!-- Placed at the end of the document so the pages load faster -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+            <script src="http://getbootstrap.com/examples/offcanvas/offcanvas.js"></script>
 
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        </asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
         </div>
     </form>
 </body>

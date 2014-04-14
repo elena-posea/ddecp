@@ -35,8 +35,8 @@ public partial class SignUp : System.Web.UI.Page {
         try {
             Roles.AddUserToRole(CreateUserWizard1.UserName, "ONG");
         }
-        catch (System.Configuration.Provider.ProviderException) {
-            Debug.WriteLine("am prins exceptia");
+        catch (System.Configuration.Provider.ProviderException ex) {
+            Debug.WriteLine("am prins exceptia" + ex);
         }
 
     }

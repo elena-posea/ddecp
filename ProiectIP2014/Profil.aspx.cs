@@ -8,9 +8,20 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 public partial class Profil : System.Web.UI.Page {
+    private void eroareCuRedirectare(String x) {
+        continutPagina.Visible = false;
+        LabelMesaj.Text = x + " Veti fi redirectat in 5 secunde";
+        LabelMesaj.CssClass = "notOk";
+        Response.AddHeader("REFRESH", "5;URL=Default.aspx");
+    }
+
+
     protected void Page_Load(object sender, EventArgs e) {
         if (!Page.IsPostBack) {
             string username = Request.Params["username"];
+            if(username == null){
+                eroareCuRedirectare("Link invalid!");
+            }else{
             // astea pot fi adaugate, daca e necesar sa le punem pe pagina de profil (stalker-oriented :)) )
             //LabelLastLoginDateInfo.Text = Profile.LastActivityDate.ToString();
             //LabelRegisterDateInfo.Text = Profile.RegisterDate.ToString();
@@ -35,9 +46,11 @@ public partial class Profil : System.Web.UI.Page {
                 hl.NavigateUrl = "~/EditareProfil.aspx?username=" + Profile.UserName;
                 hl.Visible = true;
             }
+                
+            SqlDataSourceProiectePersonale.SelectCommand = "SELECT Proiecte.nume, Proiecte.id_proiect FROM [Proiecte] WHERE  CAST(cod_user AS VARCHAR(50)) = '" + Membership.GetUser(username).ProviderUserKey + "'";
 
-            SqlDataSourceProiectePersonale.SelectCommand = "SELECT * FROM [Proiecte] WHERE  CAST(cod_user AS VARCHAR(50)) = '" + Membership.GetUser(username).ProviderUserKey + "'";
-
+            SqlDataSourceProiecteParticipant.SelectCommand = "SELECT Proiecte.nume, Proiecte.id_proiect FROM User_are_Colaboratori INNER JOIN Proiecte ON User_are_Colaboratori.cod_proiect = Proiecte.id_proiect WHERE  CAST(User_are_Colaboratori.cod_user AS VARCHAR(50)) = '" + Membership.GetUser(username).ProviderUserKey + "' AND stare='activ'";
+            }
         }
 
     }
