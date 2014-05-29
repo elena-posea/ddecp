@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString='<%$ ConnectionStrings:MySqlConnection %>' SelectCommand="SELECT Proiecte.id_proiect, Proiecte.cod_user, CONVERT (Date, Proiecte.data_inceput) AS data_i, CONVERT (Date, Proiecte.data_sfarsit) AS data_sfarsit, Proiecte.nume, Proiecte.descriere, Proiecte.domeniu, aspnet_Users.UserName FROM Proiecte INNER JOIN aspnet_Users ON Proiecte.cod_user = aspnet_Users.UserId"></asp:SqlDataSource>
     <div class="container" style="max-width: 1000px;">
-        <div class="container" style="background-color: ghostwhite; max-width: 1000px;">
+        <div class="container" style="background-color: #EEE; max-width: 1000px;">
 
             <asp:LoginView ID="LoginView1" runat="server">
                 <AnonymousTemplate>
@@ -15,13 +15,14 @@
                             </div>
                         </LayoutTemplate>
                         <ItemTemplate>
-                            <div class="col-lg-6" id="itemPlaceholder" runat="server">
+                            <div class="col-lg-6" id="itemPlaceholder" style="padding-bottom:10px;" runat="server">
                                 <h2><%# DataBinder.Eval(Container.DataItem,"Nume") %></h2>
                                 <p class="text-danger"><%# DataBinder.Eval(Container.DataItem,"data_i") %> -- <%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem,"data_sfarsit")).ToShortDateString() %></p>
                                 <p><%# DataBinder.Eval(Container.DataItem,"Descriere") %> </p>
                                 <div class="btn-group">
-                                    <asp:Button ID="Detalii_Proiect" runat="server" Text="Vezi detalii &raquo;" OnCommand="Detalii_Proiect_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_proiect") %>' CssClass="btn btn-primary" />
+                                    <asp:Button ID="Detalii_Proiect" runat="server" Text="Vezi detalii &raquo;" OnCommand="Detalii_Proiect_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_proiect") %>' CssClass="btn btn-info" />
                                 </div>
+                
                             </div>
 
 
@@ -49,16 +50,15 @@
                                     </div>
                                 </LayoutTemplate>
                                 <ItemTemplate>
-                                    <div class="col-lg-6" id="itemPlaceholder" runat="server">
+                                    <div class="col-lg-6" id="itemPlaceholder" style="padding-bottom:10px;" runat="server">
                                         <h2><%# DataBinder.Eval(Container.DataItem,"Nume") %></h2>
                                         <p class="text-danger"><%# DataBinder.Eval(Container.DataItem,"data_i") %> -- <%# DataBinder.Eval(Container.DataItem,"data_sfarsit") %></p>
-                                        <p class="text-danger">Propus de: <%# DataBinder.Eval(Container.DataItem,"UserName") %></p>
-
                                         <p class="text-danger">Propus de: <a href="Profil.aspx?username=<%# DataBinder.Eval(Container.DataItem,"UserName") %> "><%# DataBinder.Eval(Container.DataItem,"UserName") %> </a></p>
                                         <div class="btn-group">
-                                            <asp:Button ID="Detalii_Proiect" runat="server" Text="Vezi detalii &raquo;" OnCommand="Detalii_Proiect_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_proiect") %>' CssClass="btn btn-primary" />
-                                            <asp:Button ID="Colaborator" runat="server" Text="Vreau sa particip" OnCommand="Colaborator_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_proiect") %>' CssClass="btn btn-primary" />
+                                            <asp:Button ID="Detalii_Proiect" runat="server" Text="Vezi detalii &raquo;" OnCommand="Detalii_Proiect_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_proiect") %>' CssClass="btn btn-info" />
+                                            <asp:Button ID="Colaborator" runat="server" Text="Vreau sa particip" OnCommand="Colaborator_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_proiect") %>' CssClass="btn btn-info" />
                                         </div>
+                                        <br />
                                     </div>
                                 </ItemTemplate>
                             </asp:ListView>

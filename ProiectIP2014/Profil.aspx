@@ -5,82 +5,121 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:MySqlConnection %>" SelectCommand="SELECT [Email] FROM [vw_aspnet_MembershipUsers]"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="GETProfil" runat="server" ConnectionString='<%$ ConnectionStrings:MySqlConnection %>' SelectCommand=""></asp:SqlDataSource>
     <br />
     <div class="container" style="max-width: 1000px;">
-        <div class="container" style="background-color: ghostwhite; max-width: 1000px;">
-
-            <asp:LoginView ID="LoginView1" runat="server">
-                <LoggedInTemplate>
-                    <asp:HyperLink ID="HyperLink1" runat="server" Visible="false">Editează</asp:HyperLink>
-                </LoggedInTemplate>
-            </asp:LoginView>
-            <%--  aici pun eu tot ce vreau sa vada lumea pe pagina mea; cam ce am completat la Inregistrare --%>
+        <div class="jumbotron" style="max-width: 1000px;">
+            <div style="padding-left:11px;">
+                <asp:LoginView ID="LoginView1" runat="server">
+                    <LoggedInTemplate>
+                        <asp:HyperLink ID="HyperLink1"  class="btn btn-warning" runat="server" Visible="false">Editează</asp:HyperLink>
+                    </LoggedInTemplate>
+                </asp:LoginView>
+            </div>
+        <%--  aici pun eu tot ce vreau sa vada lumea pe pagina mea; cam ce am completat la Inregistrare --%>
+            
             <asp:Label ID="LabelMesaj" runat="server"></asp:Label>
+                <div id="continutPagina" runat="server">
+                    <br />
+                    <div class="col-xs-6 col-sm-3 placeholder" style="min-height:1000px;">
+                        <img data-src="holder.js/200x200/auto/sky" class="img-responsive" src="profil_images/try.jpg" />
+                    </div>
+                    <div runat="server" style="max-width:700px;">
+                        <form class="form-horizontal">
+                            <fieldset>
+                                <legend>
+                                    <asp:Label ID="LabelNumeONG" runat="server" Text="" Font-Bold="True"></asp:Label><br />
+                                </legend>
+                                <div class="form-group">
+                                    <label for="inputEmail" class="col-lg-4 control-label">Email</label> 
+                                    <div class="col-lg-8">
+                                        <asp:Label ID="inputEmail" class="form-control" runat="server"></asp:Label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="UserName" class="col-lg-4 control-label">UserName</label> 
+                                    <div class="col-lg-8">
+                                        <asp:Label ID="userName" class="form-control" runat="server"></asp:Label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="TipONG" class="col-lg-4 control-label">Tip ONG</label> 
+                                    <div class="col-lg-8">
+                                        <asp:Label ID="tipONG" class="form-control" runat="server"></asp:Label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Descriere" class="col-lg-4 control-label">Descriere</label> 
+                                    <div class="col-lg-8">
+                                        <asp:TextBox ID="descriere"  runat="server" TextMode="MultiLine"  ReadOnly="true" style='background-color:white' class="form-control"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="anCamp" class="col-lg-4 control-label">Anul infiintarii</label> 
+                                    <div class="col-lg-8">
+                                        <asp:Label ID="anCamp" class="form-control" runat="server"></asp:Label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="profilCamp" class="col-lg-4 control-label">Profil</label> 
+                                    <div class="col-lg-8">
+                                        <asp:Label ID="profilCamp" class="form-control" runat="server"></asp:Label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nrCamp" class="col-lg-4 control-label">Profil</label> 
+                                    <div class="col-lg-8">
+                                        <asp:Label ID="nrCamp" class="form-control" runat="server"></asp:Label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                        <asp:SqlDataSource ID="SqlDataSourceProiectePersonale" runat="server" ConnectionString='<%$ ConnectionStrings:MySqlConnection %>' SelectCommand="SELECT Proiecte.nume, Proiecte.id_proiect FROM [Proiecte]"></asp:SqlDataSource>
+                          <br />
+                          <label class="control-label">    Proiecte iniţiate: </label>
+                                              
+                        <asp:ListView ID="ListView1" DataSourceID="SqlDataSourceProiectePersonale" runat="server">
+                           <LayoutTemplate>    
+                               <div id="itemPlaceholder" runat ="server">
+                                   <br />
+                                </div>
+                             </LayoutTemplate>
+                          <ItemTemplate>   
+                              <div id="itemPlaceholder" runat ="server">
+                                  <span class="glyphicon glyphicon-ok"></span>
+                                <a href="Proiect.aspx?id_proiect=<%# DataBinder.Eval(Container.DataItem,"id_proiect") %> "><%# DataBinder.Eval(Container.DataItem,"nume") %> </a>
+                                <br />  
+                              </div>
+                              </ItemTemplate>
+                         </asp:ListView>
+                                
+                       
+                        
 
-
-            <div id="continutPagina" runat="server">
-                Pagina de profil
-        <asp:Label ID="LabelNumeONG" runat="server" Text="" Font-Bold="True"></asp:Label><br />
-
-                <asp:Label ID="LabelUserName" runat="server" Text="Username: "></asp:Label>
-                <asp:Label ID="LabelUserNameCamp" runat="server" Text=""></asp:Label><br />
-
-
-                <asp:Label ID="LabelEmail" runat="server" Text="E-mail de contact: "></asp:Label>
-                <asp:Label ID="LabelEmailCamp" runat="server" Text=""></asp:Label><br />
-
-                <asp:Label ID="LabelDescriere" runat="server" Text="Descrierea activităţii "></asp:Label><br />
-                <asp:Label ID="LabelDescriereCamp" runat="server" Text=""></asp:Label><br />
-
-                <asp:Label ID="LabelNrInregistrare" runat="server" Text="Numărul de înregistrare: "></asp:Label>
-                <asp:Label ID="LabelNrInregistrareCamp" runat="server" Text=""></asp:Label><br />
-
-                <asp:Label ID="LabelTipONGCamp" runat="server" Text=""></asp:Label>
-                înfiinţată în anul
-    <asp:Label ID="LabelAnCamp" runat="server" Text=""></asp:Label><br />
-
-                <asp:Label ID="LabelProfil" runat="server" Text="Profilul ONG-ului "></asp:Label>
-                <br />
-                <asp:Label ID="LabelProfilCamp" runat="server" Text=""></asp:Label>
-                <br />
-
-                <asp:SqlDataSource ID="SqlDataSourceProiectePersonale" runat="server" ConnectionString='<%$ ConnectionStrings:MySqlConnection %>' SelectCommand="SELECT Proiecte.nume, Proiecte.id_proiect FROM [Proiecte]"></asp:SqlDataSource>
-                Proiecte iniţiate:
-        <br />
-
-                <asp:ListView ID="ListView1" DataSourceID="SqlDataSourceProiectePersonale" runat="server">
-                    <LayoutTemplate>
-                        <div class="row" id="itemPlaceholder" runat="server">
-                        </div>
-                    </LayoutTemplate>
-                    <ItemTemplate>
-                        <a href="Proiect.aspx?id_proiect=<%# DataBinder.Eval(Container.DataItem,"id_proiect") %> "><%# DataBinder.Eval(Container.DataItem,"nume") %> </a></p>
-                    </ItemTemplate>
-                </asp:ListView>
-
-
-
-                Proiecte la care a participat
-        <br />
-                <asp:SqlDataSource ID="SqlDataSourceProiecteParticipant" runat="server" ConnectionString='<%$ ConnectionStrings:MySqlConnection %>' SelectCommand="SELECT Proiecte.nume, Proiecte.id_proiect FROM User_are_Colaboratori INNER JOIN Proiecte ON User_are_Colaboratori.cod_proiect = Proiecte.id_proiect"></asp:SqlDataSource>
-                <asp:ListView ID="ListView2" DataSourceID="SqlDataSourceProiecteParticipant" runat="server">
-                    <LayoutTemplate>
-                        <div class="row" id="itemPlaceholder" runat="server">
-                        </div>
-                    </LayoutTemplate>
-                    <ItemTemplate>
-                        <a href="Proiect.aspx?id_proiect=<%# DataBinder.Eval(Container.DataItem,"id_proiect") %> "><%# DataBinder.Eval(Container.DataItem,"nume") %> </a></p>
-                    </ItemTemplate>
-                </asp:ListView>
-                
-
+                        <label class="control-label">Proiecte la care a participat </label>
+                        <br />
+                        <asp:SqlDataSource ID="SqlDataSourceProiecteParticipant" runat="server" ConnectionString='<%$ ConnectionStrings:MySqlConnection %>' SelectCommand="SELECT Proiecte.nume, Proiecte.id_proiect FROM User_are_Colaboratori INNER JOIN Proiecte ON User_are_Colaboratori.cod_proiect = Proiecte.id_proiect"></asp:SqlDataSource>
+                        <asp:ListView ID="ListView2" DataSourceID="SqlDataSourceProiecteParticipant" runat="server">
+                            <LayoutTemplate>
+                                <div class="row" id="itemPlaceholder" runat="server">
+                                    <br />
+                                </div>
+                            </LayoutTemplate>
+                            <ItemTemplate>
+                                <div id="itemPlaceholder" runat="server">
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                    <a href="Proiect.aspx?id_proiect=<%# DataBinder.Eval(Container.DataItem,"id_proiect") %> "><%# DataBinder.Eval(Container.DataItem,"nume") %> </a></p>
+                                    <br />
+                                </div>
+                            </ItemTemplate>
+                        </asp:ListView>
+                    </div>
+                </div>
             </div>
         </div>
-
         <footer>
             <p>&copy; Company 2014</p>
         </footer>
 
-    </div>
 </asp:Content>
 

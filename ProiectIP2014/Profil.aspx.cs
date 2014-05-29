@@ -18,27 +18,30 @@ public partial class Profil : System.Web.UI.Page {
 
     protected void Page_Load(object sender, EventArgs e) {
         if (!Page.IsPostBack) {
-            string username = Request.Params["username"];
+            String username = Request.Params["username"];
             if(username == null){
                 eroareCuRedirectare("Link invalid!");
-            }else{
+            }
+            else{
             // astea pot fi adaugate, daca e necesar sa le punem pe pagina de profil (stalker-oriented :)) )
             //LabelLastLoginDateInfo.Text = Profile.LastActivityDate.ToString();
             //LabelRegisterDateInfo.Text = Profile.RegisterDate.ToString();
-            LabelUserNameCamp.Text = username;
-
             //emailul nu e in profile, e in baza de date
-            LabelEmailCamp.Text = Membership.GetUser(username).Email;
 
+            GETProfil.SelectCommand = "SELECT dbo.GetProfilePropertyValue('NumeONG', PropertyNames, PropertyValuesString) AS NumeONG, dbo.GetProfilePropertyValue('DescriereActivitate', PropertyNames, PropertyValuesString) AS Descriere, dbo.GetProfilePropertyValue('Profil', PropertyNames, PropertyValuesString) AS Profil, dbo.GetProfilePropertyValue('TipONG', PropertyNames, PropertyValuesString) AS TipONG, aspnet_Users.username AS username from aspnet_Profile, aspnet_Users where aspnet_Users.UserId = aspnet_Profile.UserId and aspnet_Users.UserName = '"+username+"';";
             ProfileBase profile = ProfileBase.Create(username, true);
 
             LabelNumeONG.Text = profile.GetPropertyValue("NumeONG").ToString();
-            LabelDescriereCamp.Text = profile.GetPropertyValue("DescriereActivitate").ToString();
-            LabelNrInregistrareCamp.Text = profile.GetPropertyValue("NrInregistrare").ToString();
-            LabelTipONGCamp.Text = profile.GetPropertyValue("TipONG").ToString(); ;
-            LabelAnCamp.Text = profile.GetPropertyValue("AnInfiintare").ToString();
-            LabelProfilCamp.Text = profile.GetPropertyValue("Profil").ToString();
-            // vreau sa completez formul cu ce era in Profile
+            inputEmail.Text = Membership.GetUser(username).Email;
+            userName.Text = username;
+
+            tipONG.Text = profile.GetPropertyValue("TipONG").ToString();
+            anCamp.Text = profile.GetPropertyValue("AnInfiintare").ToString();
+            profilCamp.Text = profile.GetPropertyValue("Profil").ToString();
+            nrCamp.Text = profile.GetPropertyValue("NrInregistrare").ToString();
+
+            descriere.Text = profile.GetPropertyValue("DescriereActivitate").ToString();
+                // vreau sa completez formul cu ce era in Profile
 
             // daca sunt chiar pe profilul meu, da-mi si linkul de editare
             if (HttpContext.Current.User.Identity.IsAuthenticated && Profile.UserName == username) {

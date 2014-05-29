@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString='<%$ ConnectionStrings:MySqlConnection %>' SelectCommand="SELECT aspnet_Users_1.UserId, aspnet_Users_1.UserName AS propus, Proiecte.id_proiect, Proiecte.nume, (SELECT UserName FROM aspnet_Users WHERE (UserId = User_are_Colaboratori.cod_user)) AS nume_colab, User_are_Colaboratori.cod_user, User_are_Colaboratori.cod_proiect FROM aspnet_Users AS aspnet_Users_1 INNER JOIN Proiecte ON aspnet_Users_1.UserId = Proiecte.cod_user INNER JOIN User_are_Colaboratori ON Proiecte.id_proiect = User_are_Colaboratori.cod_proiect where stare='inactiv'"></asp:SqlDataSource>
-    <div class="container" style="background-color: ghostwhite; max-width: 1000px;">
+    <div class="container" style="background-color: #EEE; max-width: 1000px;">
         <asp:LoginView ID="LoginView1" runat="server">
             <RoleGroups>
                 <asp:RoleGroup Roles="ONG">
@@ -23,7 +23,7 @@
                             <ItemTemplate>
                                 <p id="itemPlaceholder" runat="server">
                                     Organizatia 
-                                    <a href="~/Profil.aspx?username=<%# DataBinder.Eval(Container.DataItem,"nume_colab") %>"><%# DataBinder.Eval(Container.DataItem,"nume_colab") %></a> 
+                                    <a href="Profil.aspx?username=<%# DataBinder.Eval(Container.DataItem,"nume_colab") %>"><%# DataBinder.Eval(Container.DataItem,"nume_colab") %></a> 
                                     vrea sa devina colaborator la proiectul 
                                     <a href="Proiect.aspx?id_proiect=<%# DataBinder.Eval(Container.DataItem,"id_proiect") %>"><%# DataBinder.Eval(Container.DataItem,"nume") %></a></p>
                                 <div class="btn-group">

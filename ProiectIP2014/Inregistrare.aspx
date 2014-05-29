@@ -5,19 +5,23 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
-    <div class="container" style="background-color: ghostwhite;">
+    <div class="container" style="padding:10px; background-color: #EEE;">
+
+
         <asp:CreateUserWizard ID="CreateUserWizard1" runat="server" OnCreatedUser="CreateUserWizard1_CreatedUser" OnContinueButtonClick="CreateUserWizard1_ContinueButtonClick">
             <WizardSteps>
                 <asp:CreateUserWizardStep ID="CreateUserWizardStep1" runat="server">
                     <ContentTemplate>
                         <table class="formular">
                             <tr>
-                                <td colspan="2">Formular înscriere
-                                </td>
+
+                                <td colspan="2" style="padding-top:20px;"><legend>Formular înscriere
+                                </legend>
+                                    </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:Label ID="LabelUserName" runat="server" Text="Username "></asp:Label>
+                                    <asp:Label ID="LabelUserName"  runat="server" Text="Username "></asp:Label>
                                 </td>
                                 <td>
                                     <asp:TextBox ID="UserName" runat="server"></asp:TextBox>
@@ -61,7 +65,7 @@
                                     <asp:Label ID="LabelDescriere" runat="server" Text="Descrierea activităţii "></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TextBoxDescriere" runat="server" TextMode="MultiLine"></asp:TextBox>
+                                    <asp:TextBox ID="TextBoxDescriere" raws='3' runat="server" TextMode="MultiLine"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidatorDescriere" runat="server" ErrorMessage="Descrierea activităţii ONG-ului este obligatorie" ControlToValidate="TextBoxDescriere"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>

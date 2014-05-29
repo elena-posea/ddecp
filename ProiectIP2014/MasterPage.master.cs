@@ -14,4 +14,8 @@ public partial class MasterPage : System.Web.UI.MasterPage {
             }
         }
     }
+    protected void Search_Command(object sender, CommandEventArgs e)
+    {
+        Response.Redirect("~/Search.aspx?searchBox=" + searchBox.Text);
+    }
 }

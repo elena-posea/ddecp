@@ -24,6 +24,7 @@
                     <hr />
                     <asp:TextBox ID="TextBoxContinut" runat="server" Width="100%" Height="100px" TextMode="MultiLine"></asp:TextBox><br />
                     <asp:Button CssClass="btn-default" ID="AddCommentButton" runat="server" Text="Adauga un comentariu" OnClick="adaugaComentariu" />
+                    
                     <hr />
                     <!-- lista comentariilor deja postate -->
                     <asp:Repeater ID="RepeaterComentarii" runat="server" DataSourceID="SqlDataSourceListaComentarii">
@@ -38,7 +39,7 @@
                                     </span>
                                     <div class="alignRight" style="font-size: 15px; font-weight: normal;">
                                         Ultima editare:
-                        <%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "data")).ToShortDateString() %>
+                                        <%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "data")).ToShortDateString() %>
                                     </div>
                                     <br />
                                 </div>
