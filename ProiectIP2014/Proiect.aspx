@@ -51,10 +51,10 @@
                                 <td class="success col-md-2"><%# DataBinder.Eval(Container.DataItem,"deadline") %></td>
                                 <td class="col-md-2">*****</td>
                                 <td class="col-md-2">
-                                    <asp:Button class="btn btn-primary btn-xs" ID="editeaza_task" OnClick="editeaza_task_Click" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_task") %>' runat="server" Text="Editeaza" />
-                                    <asp:Button class="btn btn-primary btn-xs" ID="sterge_task" runat="server" Text="Sterge" />
+                                    <asp:Button class="btn btn-primary btn-xs" ID="editeaza_task" OnCommand="editeaza_task_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_task") %>' runat="server" Text="Editeaza" />
+                                    <asp:Button class="btn btn-primary btn-xs" ID="sterge_task" OnCommand="sterge_task_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_task") %>' runat="server" Text="Sterge" />
                                     <br /><br/>
-                                    <asp:Button class="btn btn-success btn-xs" ID="terminat" runat="server" Text="Marcheaza ca terminat" />
+                                    <asp:Button class="btn btn-success btn-xs" OnCommand="terminat_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_task") %>' ID="terminat" runat="server" Text="Marcheaza ca terminat" />
                                 </td>
                             </tr>
                         </ItemTemplate>

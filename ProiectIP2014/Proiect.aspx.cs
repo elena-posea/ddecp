@@ -34,6 +34,51 @@ public partial class Proiect : System.Web.UI.Page {
                         else LoginViewComentarii.Visible = false;
                         // Raspuns.Text = "eu sunt " + eu;
                     }
+
+                    //daca task-ul e inactiv dezactivez butoanle pt editare, stergere, terminare
+
+                    try
+                    {
+                        SqlConnection connection = new SqlConnection();
+                        connection.ConnectionString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True";
+                        connection.Open();
+
+                        SqlCommand command = new SqlCommand("SELECT stare FROM Tasks", connection);
+                       
+                        try
+                        {
+                            
+                            SqlDataReader r = command.ExecuteReader();
+                            while (r.Read())
+                            {
+                                Raspuns1.Text = "ddddddddddddd";
+                                Raspuns1.Text = r["stare"].ToString();
+
+                                if (r["stare"].ToString().Equals("inactiv"))
+                                {
+                                    Raspuns1.Text = "vvvvvv";
+                                    Button bt = (Button) LoginViewComentarii.FindControl("editeaza_task");
+                                    
+                                };
+
+                               
+                            }
+                        }
+                        catch (SqlException ex)
+                        {
+                            Raspuns1.Text = ex.Message;
+                        }
+                        connection.Close();
+
+                    }
+
+                    catch (SqlException sqlex)
+                    {
+                        Raspuns1.Text = sqlex.Message;
+                    }
+
+
+
                 }
                 else {
                     LoginViewComentarii.Visible = false;
@@ -130,8 +175,68 @@ public partial class Proiect : System.Web.UI.Page {
         //Raspuns1.Text = Membership.GetUser().ProviderUserKey.ToString();
       
     }
-    protected void editeaza_task_Click(object sender, EventArgs e)
-    {
 
+    protected void editeaza_task_Command(object sender, CommandEventArgs e)
+    {
+        Response.Redirect("EditareTask.aspx?id_task="+e.CommandArgument+"&id_proiect="+id_proiect);
+    }
+    protected void sterge_task_Command(object sender, CommandEventArgs e)
+    {
+        try
+        {
+            SqlConnection connection = new SqlConnection();
+            connection.ConnectionString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True";
+            connection.Open();
+
+            SqlCommand command = new SqlCommand("DELETE FROM [Tasks] WHERE @id_task = id_task;", connection);
+            command.Parameters.AddWithValue("id_task", Convert.ToInt32(e.CommandArgument));
+
+            try
+            {
+                command.ExecuteNonQuery();
+                Response.Redirect("~/Proiect.aspx?id_proiect="+id_proiect);
+
+
+            }
+            catch (SqlException ex)
+            {
+                Raspuns.Text = ex.Message;
+            }
+        }
+        catch (Exception ex)
+        {
+            Raspuns.Text = ex.Message.ToString();
+        }
+    }
+    protected void terminat_Command(object sender, CommandEventArgs e)
+    {
+        try
+        {
+            SqlConnection connection = new SqlConnection();
+            connection.ConnectionString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True";
+            connection.Open();
+
+            int id_task = Convert.ToInt32(Request.Params["id_task"]);
+            SqlCommand command = new SqlCommand("UPDATE Tasks SET [stare]='inactiv'where [id_task] = @id_task ;", connection);
+            command.Parameters.AddWithValue("id_task", Convert.ToInt32(e.CommandArgument));
+
+            try
+            {
+                command.ExecuteNonQuery();
+            
+                Response.Redirect("~/Proiect.aspx?id_proiect=" + Request.Params["id_proiect"]);
+
+            }
+            catch (SqlException sqlex)
+            {
+                Raspuns.Text = sqlex.Message;
+            }
+
+            connection.Close();
+        }
+        catch (SqlException sqlex)
+        {
+            Raspuns.Text = sqlex.Message;
+        }
     }
 }

@@ -6,6 +6,7 @@
     <div class="container" style="background-color: lightgray; width: 50%">
         <br />
         <asp:Label ID="Raspuns" runat="server" Text=""></asp:Label>
+
         <form class="form-horizontal" role="form">
             <div class="form-group">
                 <label for="descriere" class="col-sm-2 control-label">Descriere</label>
@@ -17,7 +18,7 @@
             </div>
             <div class="form-group">
                 <label for="nr_voluntari" class="col-sm-2 control-label">Numar de voluntari</label>
-                <div class="col-sm-10">                    
+                <div class="col-sm-10">
                     <asp:TextBox ID="nr_voluntari" class="form-control" placeholder="Numar de voluntari" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="nr_voluntari" runat="server" ErrorMessage="Camp obligatoriu"></asp:RequiredFieldValidator>
                     <br />
