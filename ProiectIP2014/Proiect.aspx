@@ -20,7 +20,7 @@
 
                 </ItemTemplate>
             </asp:Repeater>
-            <asp:Label ID="Raspuns1" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="Raspuns1" runat="server" Text=""></asp:Label>
 
             <asp:LoginView ID="LoginViewComentarii" runat="server">
                 <LoggedInTemplate>
@@ -39,12 +39,13 @@
                                         <th>Deadline</th>
                                         <th>ONG asignat</th>
                                     </tr>
-                                </thead>                       
+                                </thead>
                         </HeaderTemplate>
                         <FooterTemplate>
                             </table>
                         </FooterTemplate>
                         <ItemTemplate>
+
                             <tr>
                                 <td class="col-md-4"><%# DataBinder.Eval(Container.DataItem,"descriere") %></td>
                                 <td class="col-md-2"><%# DataBinder.Eval(Container.DataItem,"nr_voluntari") %></td>
@@ -53,13 +54,14 @@
                                 <td class="col-md-2">
                                     <asp:Button class="btn btn-primary btn-xs" ID="editeaza_task" OnCommand="editeaza_task_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_task") %>' runat="server" Text="Editeaza" />
                                     <asp:Button class="btn btn-primary btn-xs" ID="sterge_task" OnCommand="sterge_task_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_task") %>' runat="server" Text="Sterge" />
-                                    <br /><br/>
+                                    <br />
+                                    <br />
                                     <asp:Button class="btn btn-success btn-xs" OnCommand="terminat_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_task") %>' ID="terminat" runat="server" Text="Marcheaza ca terminat" />
                                 </td>
                             </tr>
                         </ItemTemplate>
                     </asp:Repeater>
-                    
+
                     <hr />
                     <asp:TextBox ID="TextBoxContinut" runat="server" Width="100%" Height="100px" TextMode="MultiLine"></asp:TextBox><br />
                     <asp:Button CssClass="btn-default" ID="AddCommentButton" runat="server" Text="Adauga un comentariu" OnClick="adaugaComentariu" />

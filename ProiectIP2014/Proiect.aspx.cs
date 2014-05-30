@@ -37,45 +37,45 @@ public partial class Proiect : System.Web.UI.Page {
 
                     //daca task-ul e inactiv dezactivez butoanle pt editare, stergere, terminare
 
-                    try
-                    {
-                        SqlConnection connection = new SqlConnection();
-                        connection.ConnectionString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True";
-                        connection.Open();
+                    //try
+                    //{
+                    //    SqlConnection connection = new SqlConnection();
+                    //    connection.ConnectionString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True";
+                    //    connection.Open();
 
-                        SqlCommand command = new SqlCommand("SELECT stare FROM Tasks", connection);
-                       
-                        try
-                        {
-                            
-                            SqlDataReader r = command.ExecuteReader();
-                            while (r.Read())
-                            {
-                                Raspuns1.Text = "ddddddddddddd";
-                                Raspuns1.Text = r["stare"].ToString();
+                    //    SqlCommand command = new SqlCommand("SELECT stare FROM Tasks", connection);
 
-                                if (r["stare"].ToString().Equals("inactiv"))
-                                {
-                                    Raspuns1.Text = "vvvvvv";
-                                    Button bt = (Button) LoginViewComentarii.FindControl("editeaza_task");
-                                    
-                                };
+                    //    try
+                    //    {
 
-                               
-                            }
-                        }
-                        catch (SqlException ex)
-                        {
-                            Raspuns1.Text = ex.Message;
-                        }
-                        connection.Close();
+                    //        SqlDataReader r = command.ExecuteReader();
+                    //        while (r.Read())
+                    //        {
+                    //            Raspuns1.Text = "ddddddddddddd";
+                    //            Raspuns1.Text = r["stare"].ToString();
 
-                    }
+                    //            if (r["stare"].ToString().Equals("inactiv"))
+                    //            {
+                    //                Raspuns1.Text = "vvvvvv";
+                    //                Button bt = (Button)LoginViewComentarii.FindControl("editeaza_task");
 
-                    catch (SqlException sqlex)
-                    {
-                        Raspuns1.Text = sqlex.Message;
-                    }
+                    //            };
+
+
+                    //        }
+                    //    }
+                    //    catch (SqlException ex)
+                    //    {
+                    //        Raspuns1.Text = ex.Message;
+                    //    }
+                    //    connection.Close();
+
+                    //}
+
+                    //catch (SqlException sqlex)
+                    //{
+                    //    Raspuns1.Text = sqlex.Message;
+                    //}
 
 
 
@@ -223,7 +223,15 @@ public partial class Proiect : System.Web.UI.Page {
             try
             {
                 command.ExecuteNonQuery();
-            
+
+                //Repeater rp = (Repeater)LoginViewComentarii.FindControl("Repeater2");
+                //Raspuns1.Text = rp.ID.ToString();
+
+                //Button bt = (Button)rp.FindControl("Button1");
+                
+                //Raspuns1.Text = bt.ID.ToString();
+                
+                
                 Response.Redirect("~/Proiect.aspx?id_proiect=" + Request.Params["id_proiect"]);
 
             }
