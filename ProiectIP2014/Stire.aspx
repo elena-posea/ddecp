@@ -13,7 +13,10 @@
                 <ItemTemplate>
                     <h2><%# DataBinder.Eval(Container.DataItem,"titlu") %></h2>
                     <p><%# DataBinder.Eval(Container.DataItem,"descriere") %> </p>
-                    <p><%# DataBinder.Eval(Container.DataItem,"continut") %></p>
+                    <p>
+                        <img id="img_p" runat="server" class="project_img"  visible="<%# imgExists() %>" src="<%# getImgSrc() %>"/>
+                        <%# DataBinder.Eval(Container.DataItem,"continut") %>
+                    </p>
                 
                 </ItemTemplate>
             </asp:Repeater>

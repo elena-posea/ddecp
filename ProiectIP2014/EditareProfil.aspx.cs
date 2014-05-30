@@ -6,6 +6,8 @@ using System.Web.Profile;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web;
+using System.IO;
 
 public partial class EditareProfil : System.Web.UI.Page {
 
@@ -28,6 +30,13 @@ public partial class EditareProfil : System.Web.UI.Page {
             }
             else
             {
+                //src-ul imaginii de profil:
+                string fn = "~/profil_images/" + username + "_profil.jpg";
+                string fn2 = Server.MapPath("profil_images") + "/" + username + "_profil.jpg";
+                if (File.Exists(fn2))
+                    img_profil.Src = fn;
+                //end
+
                 // astea pot fi adaugate, daca e necesar sa le punem pe pagina de profil (stalker-oriented :)) )
                 //LabelLastLoginDateInfo.Text = Profile.LastActivityDate.ToString();
                 //LabelRegisterDateInfo.Text = Profile.RegisterDate.ToString();
@@ -59,5 +68,32 @@ public partial class EditareProfil : System.Web.UI.Page {
         Profile.Profil = profilCamp.Text;
         Profile.NrInregistrare = nrCamp.Text;
         
+    }
+
+    protected void upload_pic(object sender, System.EventArgs e)
+    {
+        if ((File1.PostedFile != null) && (File1.PostedFile.ContentLength > 0))
+        {
+            string fn = System.IO.Path.GetFileName(File1.PostedFile.FileName);
+            string fext = System.IO.Path.GetExtension(File1.PostedFile.FileName);
+            string SaveLocation = Server.MapPath("profil_images") + "\\" + Membership.GetUser().UserName + "_profil.jpg";
+            try
+            {
+                File1.PostedFile.SaveAs(SaveLocation);
+                rasp_up.InnerText = "Fisier uploadat cu succes (" + fn + "). Schimbarea pozei poate dura cateva minute in functie de cache.  Pagina se va reincarca in 5 secunde.";
+                Response.AddHeader("REFRESH", "5");
+            }
+            catch (Exception ex)
+            {
+                Response.Write("Eroare: " + ex.Message);
+                //Note: Exception.Message returns a detailed message that describes the current exception. 
+                //For security reasons, we do not recommend that you return Exception.Message to end users in 
+                //production environments. It would be better to return a generic error message. 
+            }
+        }
+        else
+        {
+            rasp_up.InnerText = "Selecteaza o imagine pentru upload.";
+        }
     }
 }

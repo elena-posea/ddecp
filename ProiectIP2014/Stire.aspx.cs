@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
 
 public partial class Stire : System.Web.UI.Page
 {
@@ -19,5 +20,29 @@ public partial class Stire : System.Web.UI.Page
 
             }
         }
+    }
+
+    protected bool imgExists()
+    {
+        if (getImgSrc() == "")
+            return false;
+        else
+            return true;
+    }
+
+    protected string getImgSrc()
+    {
+        id_stire = Request.Params["id_stire"];
+        if (id_stire != null)
+        {
+            //src-ul imaginii de profil:
+            string fn = "~/stiri_images/" + id_stire + ".jpg";
+            string fn2 = Server.MapPath("stiri_images") + "/" + id_stire + ".jpg";
+            //asd.InnerHtml = fn2;
+            if (File.Exists(fn2))
+                return fn;
+            //end
+        }
+        return "";
     }
 }
