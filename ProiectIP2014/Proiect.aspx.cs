@@ -122,4 +122,16 @@ public partial class Proiect : System.Web.UI.Page {
 
     }
 
+    protected void adauga_task_Click(object sender, EventArgs e)
+    { 
+        id_proiect = Request.Params["id_proiect"];
+
+        Response.Redirect("~/AdaugaTask.aspx?id_proiect=" + id_proiect);
+        //Raspuns1.Text = Membership.GetUser().ProviderUserKey.ToString();
+      
+    }
+    protected void editeaza_task_Click(object sender, EventArgs e)
+    {
+
+    }
 }
