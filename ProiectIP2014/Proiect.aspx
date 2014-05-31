@@ -37,6 +37,7 @@
                                         <th>Descriere</th>
                                         <th>Numar de voluntari</th>
                                         <th>Deadline</th>
+                                        <th>ONG iniţiator</th>
                                         <th>ONG asignat</th>
                                     </tr>
                                 </thead>
@@ -49,14 +50,28 @@
                             <tr>
                                 <td class="col-md-4"><%# DataBinder.Eval(Container.DataItem,"descriere") %></td>
                                 <td class="col-md-2"><%# DataBinder.Eval(Container.DataItem,"nr_voluntari") %></td>
-                                <td class="success col-md-2"><%# DataBinder.Eval(Container.DataItem,"deadline") %></td>
-                                <td class="col-md-2">*****</td>
+                                <td class="success col-md-2"><%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem,"deadline")).ToShortDateString() %></td>
+                                <td class="col-md-2"><a href="Profil.aspx?username=<%# getUserNameFromID((DataBinder.Eval(Container.DataItem,"cod_initiator")).ToString()) %> "><%# getUserNameFromID((DataBinder.Eval(Container.DataItem,"cod_initiator")).ToString()) %> </a></td>
+
                                 <td class="col-md-2">
-                                    <asp:Button class="btn btn-primary btn-xs" ID="editeaza_task" OnCommand="editeaza_task_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_task") %>' runat="server" Text="Editeaza" />
+                                    <%# getUserNameFromID((DataBinder.Eval(Container.DataItem,"cod_asignat")).ToString()) %>
+
+                                    <asp:Button Visible='<%# !seOcupaDejaCinevaDeTask(Convert.ToInt32(DataBinder.Eval(Container.DataItem,"id_task")))  %>' class="btn btn-primary btn-xs" ID="ma_ocup_eu" OnCommand="ma_ocup_eu_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_task") %>' runat="server" Text="Mă ocup eu!" />
+                                    <br />
+                                    <asp:Panel ID="Panel1" runat="server" Visible='<%# eu_am_propus_taskul(Membership.GetUser().ProviderUserKey.ToString(), DataBinder.Eval(Container.DataItem,"id_task").ToString())  %>'>
+                                        <a href="Altcineva.aspx?id_task=<%# DataBinder.Eval(Container.DataItem,"id_task") %>&id_proiect=<%# DataBinder.Eval(Container.DataItem,"cod_proiect") %>">Să se ocupe altcineva</a>
+                                    </asp:Panel>
+
+                                </td>
+                                <td class="col-md-2">
+                                    <asp:Panel ID="Panel2" runat="server" Visible='<%# nu_e_terminat(DataBinder.Eval(Container.DataItem,"id_task").ToString()) %>' >
+                                        <asp:Button class="btn btn-primary btn-xs" ID="editeaza_task" OnCommand="editeaza_task_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_task") %>' runat="server" Text="Editeaza" />
+                                        <br />
+                                        <br />
+                                        <asp:Button class="btn btn-success btn-xs" OnCommand="terminat_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_task") %>' ID="terminat" runat="server" Text="Marcheaza ca terminat" />
+
+                                    </asp:Panel>
                                     <asp:Button class="btn btn-primary btn-xs" ID="sterge_task" OnCommand="sterge_task_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_task") %>' runat="server" Text="Sterge" />
-                                    <br />
-                                    <br />
-                                    <asp:Button class="btn btn-success btn-xs" OnCommand="terminat_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_task") %>' ID="terminat" runat="server" Text="Marcheaza ca terminat" />
                                 </td>
                             </tr>
                         </ItemTemplate>
