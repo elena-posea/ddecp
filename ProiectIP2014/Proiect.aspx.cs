@@ -222,7 +222,7 @@ public partial class Proiect : System.Web.UI.Page {
             connection.ConnectionString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True";
             connection.Open();
 
-            SqlCommand command = new SqlCommand("SELECT stare, deadline FROM Tasks WHERE deadline <= GETDATE() AND id_task=" + id_task, connection);
+            SqlCommand command = new SqlCommand("SELECT stare FROM Tasks WHERE  DATEADD(day, DATEDIFF(day, 0, deadline), 0) >=  DATEADD(day, DATEDIFF(day, 0, getdate()), 0) AND id_task=" + id_task, connection);
 
             try {
 
