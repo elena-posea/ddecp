@@ -37,7 +37,6 @@
                 <input type="file" id="File1" name="File1" runat="server">
                 <br />
                 <literal id="rasp_up" runat="server" text="asd"></literal>
-                <%--<input type="submit" id="Submit1" value="Upload" runat="server" name="Submit1" onclick="Submit1_ServerClick" />--%>
             </form>
         <%--upload img--%>
          

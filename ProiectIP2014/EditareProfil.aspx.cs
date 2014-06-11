@@ -66,7 +66,7 @@ public partial class EditareProfil : System.Web.UI.Page {
         Profile.DescriereActivitate = descriere.Text;
         Profile.Profil = profilCamp.Text;
         Profile.NrInregistrare = nrCamp.Text;
-        
+        upload_pic(sender, e);
     }
 
     protected void upload_pic(object sender, System.EventArgs e)
@@ -79,8 +79,8 @@ public partial class EditareProfil : System.Web.UI.Page {
             try
             {
                 File1.PostedFile.SaveAs(SaveLocation);
-                rasp_up.InnerText = "Fisier uploadat cu succes (" + fn + "). Schimbarea pozei poate dura cateva minute in functie de cache.  Pagina se va reincarca in 5 secunde.";
-                Response.AddHeader("REFRESH", "5");
+                rasp_up.InnerText = "Fisier uploadat cu succes (" + fn + "). Schimbarea pozei poate dura cateva minute in functie de cache!";
+                //Response.AddHeader("REFRESH", "5");
             }
             catch (Exception ex)
             {
@@ -92,7 +92,7 @@ public partial class EditareProfil : System.Web.UI.Page {
         }
         else
         {
-            rasp_up.InnerText = "Selecteaza o imagine pentru upload.";
+            //rasp_up.InnerText = "Selecteaza o imagine pentru upload.";
         }
     }
 }

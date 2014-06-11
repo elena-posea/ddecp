@@ -81,6 +81,7 @@ public partial class Mesaje1 : System.Web.UI.Page
         }
         catch (NullReferenceException ex)
         {
+            Response.Write("Eroare: " + ex.Message);
             //asd.InnerText = ex.Message;
         }
         return cod_user;

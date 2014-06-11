@@ -15,22 +15,27 @@
             <asp:Label ID="LabelMesaj" runat="server"></asp:Label>
                 <div id="continutPagina" runat="server">
                     <br />
-                    <div class="col-xs-6 col-sm-3 placeholder" style="min-height:1000px;">
+                    <div class="col-xs-6 col-sm-3 placeholder" style="min-height:1000px;" >
                         <img id="img_profil" data-src="holder.js/200x200/auto/sky" runat="server" class="img-responsive" src="profil_images/default.jpg" />
                         <%--upload img--%>
-                        <form id="Form1" method="post" enctype="multipart/form-data" />
+                        <%--<form id="Form1" method="post" enctype="multipart/form-data" />
                             <legend>Schimba poza:</legend>
                             <label for="Image">Se accepta doar imagini .jpg sub 4MB</label>
                             <input type="file" id="File1" name="File1" runat="server">
-                            <br />
+                            <br />0
                             <asp:Button ID="b_upload_img" runat="server" Text="Upload" onclick="upload_pic" />
                             <literal id="rasp_up" runat="server" text="asd"></literal>
-                            <%--<input type="submit" id="Submit1" value="Upload" runat="server" name="Submit1" onclick="Submit1_ServerClick" />--%>
+                        </form>--%>
+                        <form id="Form1" method="post" enctype="multipart/form-data" />
+                            <label for="Image">Se accepta doar imagini .jpg sub 4MB</label>
+                            <input type="file" id="File1" name="File1" runat="server">
+                            <br />
+                            <literal id="rasp_up" runat="server" text="">Schimbarea pozei poate dura cateva minute in functie de cache!</literal>
                         </form>
                         <%--upload img--%>
                     </div>
                     <div id="Div1" runat="server" style="max-width:700px;">
-                        <form class="form-horizontal">
+                        <div class="form-horizontal">
                             <fieldset>
                                 <legend>
                                     <asp:Label ID="LabelNumeONG" runat="server" Text="" Font-Bold="True"></asp:Label><br />
@@ -92,7 +97,7 @@
 
                                 </div>
                             </fieldset>
-                        </form> 
+                        </div> 
                                          
                     </div>
                 </div>

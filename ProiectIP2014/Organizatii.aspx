@@ -28,7 +28,7 @@
             </asp:ListView>
             </div>
             <div id="Div1" class="pagination" runat="server">
-            <asp:DataPager runat="server" PagedControlID="ListOrganizatii" ID="DataPager" PageSize="9">
+            <asp:DataPager runat="server" PagedControlID="ListOrganizatii" ID="DataPager" PageSize="6">
                 <Fields>
                     <asp:NumericPagerField
                                 ButtonCount="5"

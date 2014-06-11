@@ -251,11 +251,13 @@ public partial class Mesaje_new : System.Web.UI.Page
             }
             catch (SqlException ex)
             {
+                Response.Write("Eroare: " + ex.Message);
                 //lb.Text = ex.Message;
             }
         }
         catch (NullReferenceException ex)
         {
+            Response.Write("Eroare: " + ex.Message);
             //lb.Text = ex.Message;
         }
     }
@@ -283,6 +285,7 @@ public partial class Mesaje_new : System.Web.UI.Page
         }
         catch (NullReferenceException ex)
         {
+            Response.Write("Eroare: " + ex.Message);
             //asd.InnerText = ex.Message;
         }
         return cod_user;
