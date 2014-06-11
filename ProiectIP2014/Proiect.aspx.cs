@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
 
 public partial class Proiect : System.Web.UI.Page {
     private static string id_proiect;
@@ -14,6 +15,7 @@ public partial class Proiect : System.Web.UI.Page {
         if (!Page.IsPostBack) {
             id_proiect = Request.Params["id_proiect"];
             if (id_proiect != null) {
+                
                 SqlDataSource1.SelectCommand = "SELECT Proiecte.id_proiect, Proiecte.cod_user, CONVERT (Date, Proiecte.data_inceput) AS data_i, CONVERT (Date, Proiecte.data_sfarsit) AS data_sfarsit, Proiecte.nume, Proiecte.descriere, Proiecte.continut, Proiecte.domeniu, aspnet_Users.UserName FROM Proiecte INNER JOIN aspnet_Users ON Proiecte.cod_user = aspnet_Users.UserId where id_proiect = " + Server.UrlDecode(id_proiect) + ";";
                 // SqlDataSourceTask.SelectCommand = "SELECT * FROM [Tasks] WHERE cod_proiect = " + id_proiect + "ORDER BY [deadline]";
                 SqlDataSourceTask.SelectCommand = "SELECT t.id_task, t.cod_initiator, t.cod_asignat, t.cod_proiect, t.descriere, t.nr_voluntari, t.deadline, stare FROM Tasks AS t WHERE t.cod_proiect = " + id_proiect + "ORDER BY [deadline]";
@@ -280,5 +282,29 @@ public partial class Proiect : System.Web.UI.Page {
         catch (SqlException sqlex) {
             Raspuns.Text = sqlex.Message;
         }
+    }
+
+    protected bool imgExists()
+    {
+        if (getImgSrc() == "")
+            return false;
+        else
+            return true;
+    }
+
+    protected string getImgSrc()
+    {
+        id_proiect = Request.Params["id_proiect"];
+        if (id_proiect != null)
+        {
+            //src-ul imaginii de profil:
+            string fn = "~/proiect_images/" + id_proiect + ".jpg";
+            string fn2 = Server.MapPath("proiect_images") + "/" + id_proiect + ".jpg";
+            //asd.InnerHtml = fn2;
+            if (File.Exists(fn2))
+                return fn;
+            //end
+        }
+        return "";
     }
 }

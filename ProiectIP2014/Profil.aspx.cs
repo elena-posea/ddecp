@@ -6,6 +6,7 @@ using System.Web.Profile;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
 
 public partial class Profil : System.Web.UI.Page {
     private void eroareCuRedirectare(String x) {
@@ -23,6 +24,13 @@ public partial class Profil : System.Web.UI.Page {
                 eroareCuRedirectare("Link invalid!");
             }
             else{
+                //src-ul imaginii de profil:
+                string fn = "~/profil_images/" + username + "_profil.jpg";
+                string fn2 = Server.MapPath("profil_images") + "/" + username + "_profil.jpg";
+                if (File.Exists(fn2))
+                    img_profil.Src = fn;
+                //end
+
             // astea pot fi adaugate, daca e necesar sa le punem pe pagina de profil (stalker-oriented :)) )
             //LabelLastLoginDateInfo.Text = Profile.LastActivityDate.ToString();
             //LabelRegisterDateInfo.Text = Profile.RegisterDate.ToString();

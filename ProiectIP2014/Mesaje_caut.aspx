@@ -143,7 +143,7 @@
                         </div>
 
                         <%--SideBar - Dreapta--%>
-                        <div class="col-xs-3 container" id="sidebar" role="navigation">
+                        <%--<div class="col-xs-3 container" id="sidebar" role="navigation">
                           <div class="list-group">
                             <a href="#" class="list-group-item active">Proiectele aflate in desfasurare</a>
                             <a href="#" class="list-group-item">Link</a>
@@ -157,7 +157,29 @@
                             <a href="Mesaje_caut.aspx" class="list-group-item">Cauta in conversatii</a>
                             <a href="#" class="list-group-item">Link</a>
                           </div>
-                        </div><!--/span-->
+                        </div><!--/span-->--%>
+
+                        <%--SideBar - Dreapta + proiecte aflate in desf--%>
+                        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" runat="server" id="sidebar" role="navigation">
+                            <div id="Div1" class="list-group" runat="server">
+                                <a href="#" class="list-group-item active">Proiectele aflate in desfasurare</a>
+                                <asp:SqlDataSource ID="SqlDataSourceProiecteParticipant" runat="server" ConnectionString='<%$ ConnectionStrings:MySqlConnection %>' SelectCommand="SELECT SUBSTRING(Proiecte.nume,0,30) as nume, Proiecte.id_proiect FROM User_are_Colaboratori INNER JOIN Proiecte ON User_are_Colaboratori.cod_proiect = Proiecte.id_proiect"></asp:SqlDataSource>
+                                    <asp:ListView ID="ListView4" DataSourceID="SqlDataSourceProiecteParticipant" runat="server">
+                                        <LayoutTemplate>
+                                            <a id="itemPlaceholder" runat="server">
+                                                        
+                                            </a>
+                                        </LayoutTemplate>
+                                        <ItemTemplate>
+                                            <a class="list-group-item" href="Proiect.aspx?id_proiect=<%# DataBinder.Eval(Container.DataItem,"id_proiect") %> "><%# DataBinder.Eval(Container.DataItem,"nume") %> ...</a>
+                                        </ItemTemplate>
+                                </asp:ListView>
+                                <a href="#" class="list-group-item active">Mesaje</a>
+                                <a href="Mesaje_main.aspx" class="list-group-item">Conversatiile mele</a>
+                                <a href="Mesaje_new.aspx" class="list-group-item">Conversatie noua</a>
+                                <a href="Mesaje_caut.aspx" class="list-group-item">Cauta in conversatii</a>
+                            </div>
+                        </div>
 
                     </ContentTemplate>
                 </asp:RoleGroup>

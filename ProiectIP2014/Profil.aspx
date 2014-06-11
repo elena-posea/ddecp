@@ -22,7 +22,7 @@
                 <div id="continutPagina" runat="server">
                     <br />
                     <div class="col-xs-6 col-sm-3 placeholder" style="min-height:1000px;">
-                        <img data-src="holder.js/200x200/auto/sky" class="img-responsive" src="profil_images/try.jpg" />
+                        <img id="img_profil" data-src="holder.js/200x200/auto/sky" runat="server" class="img-responsive" src="profil_images/default.jpg" />
                     </div>
                     <div runat="server" style="max-width:700px;">
                         <form class="form-horizontal">

@@ -16,7 +16,11 @@
                     <h2><%# DataBinder.Eval(Container.DataItem,"nume") %></h2>
                     <p class="text-danger"><%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem,"data_i")).ToShortDateString()%> -- <%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem,"data_sfarsit")).ToShortDateString() %></p>
                     <p><%# DataBinder.Eval(Container.DataItem,"descriere") %> </p>
-                    <p><%# DataBinder.Eval(Container.DataItem,"continut") %></p>
+     
+                    <p style="display:inline">
+                        <img id="img_p" runat="server" class="project_img"  visible="<%# imgExists() %>" src="<%# getImgSrc() %>"/>
+                        <%# DataBinder.Eval(Container.DataItem,"continut") %>
+                    </p>
 
                 </ItemTemplate>
             </asp:Repeater>
