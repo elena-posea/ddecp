@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Stiri.aspx.cs" Inherits="Stiri" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <link href="css/myCss.css" rel="stylesheet" />
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
@@ -15,7 +16,11 @@
                 <ItemTemplate>
                         <div class="col-lg-6" style="padding-bottom:10px;" id="itemPlaceholder" runat="server">
                             <h2><%# DataBinder.Eval(Container.DataItem,"Titlu") %></h2>
-                            <p><%# DataBinder.Eval(Container.DataItem,"Descriere") %> </p>
+                            <p>
+                                <img runat="server" class="thumb_small_img"  visible='<%# imgExists( DataBinder.Eval(Container.DataItem,"id_stire").ToString() ) %>' src='<%# getImgSrc( DataBinder.Eval(Container.DataItem,"id_stire").ToString() ) %>'/>
+                                <%# DataBinder.Eval(Container.DataItem,"Descriere") %> 
+                            </p>
+                            <div class="clearfix"> </div>
                             <div class="btn-group">
                                 <asp:Button ID="Vizualizeaza_stire" runat="server" Text="Vezi detalii &raquo;" OnCommand="Vizualizeaza_Stire_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_stire") %>' CssClass="btn btn-info" />
                            

@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
 
 public partial class Proiecte : System.Web.UI.Page
 {
@@ -52,5 +53,29 @@ public partial class Proiecte : System.Web.UI.Page
         {
             Raspuns.Text = exc.Message;
         }
+    }
+
+    protected bool imgExists(string _id_proiect)
+    {
+        //if (getImgSrc(_id_proiect) == "")
+        //    return false;
+        //else
+            return true;
+    }
+
+    protected string getImgSrc(string _id_proiect)
+    {
+        int id_proiect = int.Parse(_id_proiect);
+        if (_id_proiect != null)
+        {
+            //src-ul imaginii de profil:
+            string fn = "~/proiect_images/" + id_proiect + ".jpg";
+            string fn2 = Server.MapPath("proiect_images") + "/" + id_proiect + ".jpg";
+            //asd.InnerHtml = fn2;
+            if (File.Exists(fn2))
+                return fn;
+            //end
+        }
+        return "";
     }
 }

@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Organizatii.aspx.cs" Inherits="Organizatii" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <link href="css/myCss.css" rel="stylesheet" />
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
@@ -15,16 +16,19 @@
                 <ItemTemplate>
                         <div class="col-md-4" style="padding-bottom:10px;" id="itemPlaceholder" runat="server">
                             <h4><%# DataBinder.Eval(Container.DataItem,"NumeONG") %></h4>
-                            <p><%# DataBinder.Eval(Container.DataItem,"TipONG") %>
-                            <%# DataBinder.Eval(Container.DataItem,"Profil") %>
-                            <asp:Button ID="detaliiONG" runat="server" Text="Detalii ONG &raquo;" OnCommand="Detalii_ONG" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"username") %>' CssClass="btn btn-info" />
+                            <p>
+                                <img runat="server" class="thumb_xsmall_img"  visible='<%# imgExists( DataBinder.Eval(Container.DataItem,"username").ToString() ) %>' src='<%# getImgSrc( DataBinder.Eval(Container.DataItem,"username").ToString() ) %>'/>
+                                <%# DataBinder.Eval(Container.DataItem,"TipONG") %>
+                                <%# DataBinder.Eval(Container.DataItem,"Profil") %>
+                                <div class="clearfix"> </div>
+                                <asp:Button ID="detaliiONG" runat="server" Text="Detalii ONG &raquo;" OnCommand="Detalii_ONG" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"username") %>' CssClass="btn btn-info" />
                             </p>
                         </div>
                 </ItemTemplate>
             </asp:ListView>
             </div>
             <div id="Div1" class="pagination" runat="server">
-            <asp:DataPager runat="server" PagedControlID="ListOrganizatii" ID="DataPager" PageSize="4">
+            <asp:DataPager runat="server" PagedControlID="ListOrganizatii" ID="DataPager" PageSize="9">
                 <Fields>
                     <asp:NumericPagerField
                                 ButtonCount="5"

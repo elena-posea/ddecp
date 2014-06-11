@@ -62,3 +62,21 @@
     max-height: 400px;
     max-width: 400px;
 }
+
+.thumb_small_img {
+    float:left;
+    margin: 2px;
+    padding: 2px;
+    border: 1px solid black;
+    max-height: 100px;
+    max-width: 150px;
+}
+
+.thumb_xsmall_img {
+    float:left;
+    margin: 2px;
+    padding: 2px;
+    border: 1px solid black;
+    max-height: 50px;
+    max-width: 70px;
+}

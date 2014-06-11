@@ -55,7 +55,9 @@
                                                            <%# DataBinder.Eval(Container.DataItem,"nume") %>
                                                        </div>
                                                        <div class="panel-body" runat="server">
+                                                           <img runat="server" class="thumb_small_img"  visible='<%# imgExists( DataBinder.Eval(Container.DataItem,"id_proiect").ToString() ) %>' src='<%# getImgSrc( DataBinder.Eval(Container.DataItem,"id_proiect").ToString() ) %>'/>
                                                             <%# DataBinder.Eval(Container.DataItem,"descriere") %>
+                                                            <div class="clearfix"> </div>
                                                             <div class="btn-group">
                                                                 <asp:Button ID="Vizualizeaza_proiect" runat="server" Text="Vezi detalii &raquo;" OnCommand="Vizualizeaza_Proiect_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"id_proiect") %>' CssClass="btn btn-primary" />
                                                             </div>

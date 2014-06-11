@@ -6,7 +6,6 @@ using System.Web.Profile;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web;
 using System.IO;
 
 public partial class EditareProfil : System.Web.UI.Page {
